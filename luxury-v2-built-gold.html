@@ -500,7 +500,7 @@ footer a:hover{color:var(--ink)}
       +'<g opacity=".85">'
       +'<rect x="60" y="70" width="150" height="8" rx="4" fill="rgba(255,255,255,.25)"/>'
       +'<rect x="60" y="92" width="90" height="8" rx="4" fill="rgba(255,255,255,.12)"/>'
-      +'<rect x="60" y="[H]" width="230" height="10" rx="5" fill="'+hues[i]+'" opacity=".8"/>'
+      +'<rect x="60" y="'+[380,410,392][i]+'" width="230" height="10" rx="5" fill="'+hues[i]+'" opacity=".8"/>'
       +'</g>'
       +'<circle cx="'+[660,180,610][i]+'" cy="'+[120,120,140][i]+'" r="5" fill="'+hues[i]+'"/>'
       +'<circle cx="'+[700,140,660][i]+'" cy="'+[170,90,190][i]+'" r="3" fill="rgba(255,255,255,.5)"/>'
@@ -549,7 +549,6 @@ footer a:hover{color:var(--ink)}
   /* ---------- three.js scene ---------- */
   var stage=document.getElementById("stage");
   function fallback(){ stage.style.display="none"; document.getElementById("stagefb").style.display="grid"; }
-  if(!window.matchMedia("(min-width: 1px)").matches) return;
   var s=document.createElement("script");
   s.type="importmap";
   s.textContent=JSON.stringify({imports:{"three":"https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"}});
