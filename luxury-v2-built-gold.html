@@ -264,6 +264,26 @@ footer a:hover{color:var(--ink)}
 @media(max-width:980px){.disc-tabs{grid-template-columns:1fr 1fr}}
 @media(max-width:560px){.disc-tabs{grid-template-columns:1fr}.wallsearch input{min-width:100%;width:100%}}
 
+
+/* ---- featured view + expand toggle ---- */
+.walllabel{margin:0 0 16px;display:flex;align-items:center;gap:12px;font-size:11px;
+  letter-spacing:.22em;text-transform:uppercase;color:var(--muted)}
+.walllabel:before{content:"";width:26px;height:1px;background:var(--acc);opacity:.9}
+.wallfoot{display:flex;justify-content:center;margin-top:34px}
+.more{display:inline-flex;align-items:center;gap:2px;padding:16px 36px;border-radius:999px;cursor:pointer;
+  font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink);
+  border:1px solid color-mix(in srgb,var(--acc) 45%, transparent);
+  background:linear-gradient(120deg,rgba(255,255,255,.07),rgba(255,255,255,.015));
+  backdrop-filter:blur(14px);transition:transform .35s ease,box-shadow .35s ease,border-color .35s ease}
+.more:hover{transform:translateY(-2px);border-color:var(--acc);
+  box-shadow:0 16px 48px color-mix(in srgb,var(--acc) 30%, transparent)}
+.more i{font-style:normal;margin-left:10px;transition:transform .3s}
+.more:hover i{transform:translateX(4px)}
+.gnew{position:absolute;top:16px;right:16px;font-style:normal;font-size:9px;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--acc2);border:1px solid color-mix(in srgb,var(--acc) 45%, transparent);
+  padding:3px 9px;border-radius:999px;background:color-mix(in srgb,var(--acc) 10%, transparent)}
+.gcard.f{border-color:color-mix(in srgb,var(--acc) 22%, var(--line))}
+@media(max-width:560px){.more{width:100%;justify-content:center;padding:15px 20px}}
 </style>
 </head>
 <body>
@@ -510,7 +530,7 @@ footer a:hover{color:var(--ink)}
 
   /* ---------- preview wall ---------- */
   var BASE = "https://samviro.github.io/gym-refresh-previews/";
-  var GYMS = [{"n": "Peacock Gym", "c": "Canning Town, London", "r": "London", "d": "boxing", "s": "peacock-gym"}, {"n": "Fitness Express 25", "c": "Earls Court, London", "r": "London", "d": "functional", "s": "fitness-express-25"}, {"n": "Gator ABC", "c": "Hainault, London", "r": "London", "d": "boxing", "s": "gator-abc"}, {"n": "Bodyline Fitness", "c": "Ealing, London", "r": "London", "d": "functional", "s": "bodyline-studios"}, {"n": "All Stars Boxing", "c": "Paddington, London", "r": "London", "d": "boxing", "s": "all-stars-boxing"}, {"n": "St Pancras BC", "c": "Kentish Town, London", "r": "London", "d": "boxing", "s": "st-pancras-boxing"}, {"n": "Oryan Fitness", "c": "Islington, London", "r": "London", "d": "strength", "s": "oryan-fitness"}, {"n": "Breathe Fitness", "c": "Sutton, London", "r": "London", "d": "functional", "s": "breathe-fitness"}, {"n": "Explore Pilates", "c": "Wimbledon, London", "r": "London", "d": "functional", "s": "explore-pilates"}, {"n": "Pilates Central", "c": "Islington, London", "r": "London", "d": "functional", "s": "pilates-central"}, {"n": "Repton Boxing Club", "c": "Bethnal Green, London", "r": "London", "d": "boxing", "s": "repton-boxing-club"}, {"n": "The Ring Boxing Club", "c": "Bankside, London", "r": "London", "d": "boxing", "s": "the-ring-boxing-club"}, {"n": "Physical Culture", "c": "Putney, London", "r": "London", "d": "strength", "s": "physical-culture"}, {"n": "Toshi Karate Club", "c": "Edgware, London", "r": "London", "d": "boxing", "s": "toshi-karate-club"}, {"n": "County ABC", "c": "Leyton, London", "r": "London", "d": "boxing", "s": "county-abc"}, {"n": "Miguel's Boxing Gym", "c": "Herne Hill, London", "r": "London", "d": "boxing", "s": "miguels-boxing-gym"}, {"n": "Left Hook Boxing", "c": "Shadwell, London", "r": "London", "d": "boxing", "s": "lefthook-boxing"}, {"n": "KB Fitness", "c": "Central London", "r": "London", "d": "boxing", "s": "kb-fitness"}, {"n": "The Square Boxing", "c": "Chelsea, London", "r": "London", "d": "boxing", "s": "the-square-boxing"}, {"n": "Olympic Sports Gym", "c": "Ashton-under-Lyne", "r": "Manchester", "d": "strength", "s": "olympic-sports-gym"}, {"n": "Sale West ABC", "c": "Sale, Trafford", "r": "Manchester", "d": "boxing", "s": "sale-west-abc"}, {"n": "Samson Boxing Gym", "c": "Ashton-under-Lyne", "r": "Manchester", "d": "boxing", "s": "samson-boxing"}, {"n": "Taekwondo Machine", "c": "Harpurhey, Manchester", "r": "Manchester", "d": "boxing", "s": "taekwondo-machine"}, {"n": "The PT Factory", "c": "Denton, Manchester", "r": "Manchester", "d": "functional", "s": "pt-factory"}, {"n": "Team Fearless MMA", "c": "Manchester", "r": "Manchester", "d": "boxing", "s": "team-fearless-mma"}, {"n": "Fats Gym", "c": "Manchester M3", "r": "Manchester", "d": "boxing", "s": "fats-gym"}, {"n": "Jimmy Egan's Boxing", "c": "Wythenshawe, Manchester", "r": "Manchester", "d": "boxing", "s": "jimmy-egans-boxing"}, {"n": "Moss Side Fire Station ABC", "c": "Moss Side, Manchester", "r": "Manchester", "d": "boxing", "s": "moss-side-fire-station"}, {"n": "Timperley ABC", "c": "Timperley, Altrincham", "r": "Manchester", "d": "boxing", "s": "timperley-abc"}, {"n": "GMBD Hub", "c": "Oldham", "r": "Manchester", "d": "boxing", "s": "greater-manchester-boxing-hub"}, {"n": "Eagle Kickboxing", "c": "Birmingham", "r": "Birmingham", "d": "boxing", "s": "eagle-kickboxing"}, {"n": "USKA Fight Factory", "c": "Tyseley, Birmingham", "r": "Birmingham", "d": "boxing", "s": "uska-kickboxing"}, {"n": "Aero-Kick Gym", "c": "Birmingham", "r": "Birmingham", "d": "boxing", "s": "aero-kick"}, {"n": "Pat Benson Boxing", "c": "Kings Heath, Birmingham", "r": "Birmingham", "d": "boxing", "s": "pat-benson-boxing"}, {"n": "Intensity MMA", "c": "Willenhall", "r": "Birmingham", "d": "boxing", "s": "intensity-mma"}, {"n": "Solihull Community Boxing", "c": "Solihull", "r": "Birmingham", "d": "boxing", "s": "solihull-community-boxing"}, {"n": "18Y Ultimate Fitness", "c": "Balsall Heath, Birmingham", "r": "Birmingham", "d": "strength", "s": "18y-ultimate-fitness"}, {"n": "Birmingham Martial Arts Centre", "c": "Hall Green, Birmingham", "r": "Birmingham", "d": "boxing", "s": "birmingham-martial-arts"}, {"n": "Strike Martial Arts", "c": "Solihull", "r": "Birmingham", "d": "boxing", "s": "strike-martial-arts"}, {"n": "ITS Ladies Fitness", "c": "Kingswood, Bristol", "r": "Bristol", "d": "functional", "s": "its-ladies-fitness"}, {"n": "EightyOne Gym", "c": "Bristol", "r": "Bristol", "d": "strength", "s": "eightyone-gym"}, {"n": "Kick Start Health & Fitness", "c": "Hanham, Bristol", "r": "Bristol", "d": "functional", "s": "kickstart-health"}, {"n": "Bristol School of Karate", "c": "Bristol", "r": "Bristol", "d": "boxing", "s": "bristol-school-of-karate"}, {"n": "Personal Combat Training", "c": "Bristol", "r": "Bristol", "d": "boxing", "s": "personal-combat-training"}, {"n": "Alliance Boxing", "c": "Harehills, Leeds", "r": "Leeds & Yorkshire", "d": "boxing", "s": "alliance-boxing"}, {"n": "House of Gainz", "c": "Leeds", "r": "Leeds & Yorkshire", "d": "strength", "s": "house-of-gainz"}, {"n": "Bad Company Muay Thai", "c": "Leeds", "r": "Leeds & Yorkshire", "d": "boxing", "s": "bad-company-muaythai"}, {"n": "Kiatphontip", "c": "Leeds", "r": "Leeds & Yorkshire", "d": "boxing", "s": "kiatphontip"}, {"n": "Renowned Martial Arts", "c": "Barnsley", "r": "Leeds & Yorkshire", "d": "boxing", "s": "renowned-martial-arts"}, {"n": "Selby ABC", "c": "Selby", "r": "Leeds & Yorkshire", "d": "boxing", "s": "selby-abc"}];
+  var GYMS = [{"n": "Peacock Gym", "c": "Canning Town, London", "r": "London", "d": "boxing", "s": "peacock-gym"}, {"n": "Fitness Express 25", "c": "Earls Court, London", "r": "London", "d": "functional", "s": "fitness-express-25"}, {"n": "Gator ABC", "c": "Hainault, London", "r": "London", "d": "boxing", "s": "gator-abc"}, {"n": "Bodyline Fitness", "c": "Ealing, London", "r": "London", "d": "functional", "s": "bodyline-studios"}, {"n": "All Stars Boxing", "c": "Paddington, London", "r": "London", "d": "boxing", "s": "all-stars-boxing"}, {"n": "St Pancras BC", "c": "Kentish Town, London", "r": "London", "d": "boxing", "s": "st-pancras-boxing"}, {"n": "Oryan Fitness", "c": "Islington, London", "r": "London", "d": "strength", "s": "oryan-fitness"}, {"n": "Breathe Fitness", "c": "Sutton, London", "r": "London", "d": "functional", "s": "breathe-fitness"}, {"n": "Explore Pilates", "c": "Wimbledon, London", "r": "London", "d": "functional", "s": "explore-pilates"}, {"n": "Pilates Central", "c": "Islington, London", "r": "London", "d": "functional", "s": "pilates-central"}, {"n": "Repton Boxing Club", "c": "Bethnal Green, London", "r": "London", "d": "boxing", "s": "repton-boxing-club"}, {"n": "The Ring Boxing Club", "c": "Bankside, London", "r": "London", "d": "boxing", "s": "the-ring-boxing-club"}, {"n": "Physical Culture", "c": "Putney, London", "r": "London", "d": "strength", "s": "physical-culture"}, {"n": "Toshi Karate Club", "c": "Edgware, London", "r": "London", "d": "boxing", "s": "toshi-karate-club"}, {"n": "County ABC", "c": "Leyton, London", "r": "London", "d": "boxing", "s": "county-abc"}, {"n": "Miguel's Boxing Gym", "c": "Herne Hill, London", "r": "London", "d": "boxing", "s": "miguels-boxing-gym"}, {"n": "Left Hook Boxing", "c": "Shadwell, London", "r": "London", "d": "boxing", "s": "lefthook-boxing"}, {"n": "KB Fitness", "c": "Central London", "r": "London", "d": "boxing", "s": "kb-fitness"}, {"n": "The Square Boxing", "c": "Chelsea, London", "r": "London", "d": "boxing", "s": "the-square-boxing"}, {"n": "Olympic Sports Gym", "c": "Ashton-under-Lyne", "r": "Manchester", "d": "strength", "s": "olympic-sports-gym"}, {"n": "Sale West ABC", "c": "Sale, Trafford", "r": "Manchester", "d": "boxing", "s": "sale-west-abc"}, {"n": "Samson Boxing Gym", "c": "Ashton-under-Lyne", "r": "Manchester", "d": "boxing", "s": "samson-boxing"}, {"n": "Taekwondo Machine", "c": "Harpurhey, Manchester", "r": "Manchester", "d": "boxing", "s": "taekwondo-machine"}, {"n": "The PT Factory", "c": "Denton, Manchester", "r": "Manchester", "d": "functional", "s": "pt-factory"}, {"n": "Team Fearless MMA", "c": "Manchester", "r": "Manchester", "d": "boxing", "s": "team-fearless-mma"}, {"n": "Fats Gym", "c": "Manchester M3", "r": "Manchester", "d": "boxing", "s": "fats-gym", "f": 1}, {"n": "Jimmy Egan's Boxing", "c": "Wythenshawe, Manchester", "r": "Manchester", "d": "boxing", "s": "jimmy-egans-boxing", "f": 1}, {"n": "Moss Side Fire Station ABC", "c": "Moss Side, Manchester", "r": "Manchester", "d": "boxing", "s": "moss-side-fire-station", "f": 1}, {"n": "Timperley ABC", "c": "Timperley, Altrincham", "r": "Manchester", "d": "boxing", "s": "timperley-abc", "f": 1}, {"n": "GMBD Hub", "c": "Oldham", "r": "Manchester", "d": "boxing", "s": "greater-manchester-boxing-hub", "f": 1}, {"n": "Eagle Kickboxing", "c": "Birmingham", "r": "Birmingham", "d": "boxing", "s": "eagle-kickboxing"}, {"n": "USKA Fight Factory", "c": "Tyseley, Birmingham", "r": "Birmingham", "d": "boxing", "s": "uska-kickboxing"}, {"n": "Aero-Kick Gym", "c": "Birmingham", "r": "Birmingham", "d": "boxing", "s": "aero-kick"}, {"n": "Pat Benson Boxing", "c": "Kings Heath, Birmingham", "r": "Birmingham", "d": "boxing", "s": "pat-benson-boxing"}, {"n": "Intensity MMA", "c": "Willenhall", "r": "Birmingham", "d": "boxing", "s": "intensity-mma", "f": 1}, {"n": "Solihull Community Boxing", "c": "Solihull", "r": "Birmingham", "d": "boxing", "s": "solihull-community-boxing"}, {"n": "18Y Ultimate Fitness", "c": "Balsall Heath, Birmingham", "r": "Birmingham", "d": "strength", "s": "18y-ultimate-fitness", "f": 1}, {"n": "Birmingham Martial Arts Centre", "c": "Hall Green, Birmingham", "r": "Birmingham", "d": "boxing", "s": "birmingham-martial-arts", "f": 1}, {"n": "Strike Martial Arts", "c": "Solihull", "r": "Birmingham", "d": "boxing", "s": "strike-martial-arts"}, {"n": "ITS Ladies Fitness", "c": "Kingswood, Bristol", "r": "Bristol", "d": "functional", "s": "its-ladies-fitness"}, {"n": "EightyOne Gym", "c": "Bristol", "r": "Bristol", "d": "strength", "s": "eightyone-gym"}, {"n": "Kick Start Health & Fitness", "c": "Hanham, Bristol", "r": "Bristol", "d": "functional", "s": "kickstart-health"}, {"n": "Bristol School of Karate", "c": "Bristol", "r": "Bristol", "d": "boxing", "s": "bristol-school-of-karate"}, {"n": "Personal Combat Training", "c": "Bristol", "r": "Bristol", "d": "boxing", "s": "personal-combat-training"}, {"n": "Alliance Boxing", "c": "Harehills, Leeds", "r": "Leeds & Yorkshire", "d": "boxing", "s": "alliance-boxing"}, {"n": "House of Gainz", "c": "Leeds", "r": "Leeds & Yorkshire", "d": "strength", "s": "house-of-gainz"}, {"n": "Bad Company Muay Thai", "c": "Leeds", "r": "Leeds & Yorkshire", "d": "boxing", "s": "bad-company-muaythai"}, {"n": "Kiatphontip", "c": "Leeds", "r": "Leeds & Yorkshire", "d": "boxing", "s": "kiatphontip"}, {"n": "Renowned Martial Arts", "c": "Barnsley", "r": "Leeds & Yorkshire", "d": "boxing", "s": "renowned-martial-arts"}, {"n": "Selby ABC", "c": "Selby", "r": "Leeds & Yorkshire", "d": "boxing", "s": "selby-abc"}];
   var TL = {boxing:"Boxing & Combat", strength:"Strength", functional:"Functional"};
   var REGIONS = ["All regions","London","Manchester","Birmingham","Leeds & Yorkshire","Bristol"];
   var st = {d:"all", r:"All regions", q:""};
@@ -556,8 +576,14 @@ footer a:hover{color:var(--ink)}
     return true;
   }
 
+  var showAll = false;
+  var moreBtn = document.getElementById("wallMore");
+  var wallLabel = document.getElementById("walllabel");
+  function filtersOn(){ return st.d!=="all" || st.r!=="All regions" || st.q!==""; }
   function render(hitSlug){
     var list = GYMS.filter(match);
+    var featuredMode = !showAll && !filtersOn() && !hitSlug;
+    if(featuredMode){ var feat = list.filter(function(g){ return g.f; }); if(feat.length) list = feat; }
     wall.innerHTML = "";
     if(!list.length){
       wall.innerHTML = '<div class="gempty">No preview under that name yet - request it and I\'ll build yours free.</div>';
@@ -566,17 +592,40 @@ footer a:hover{color:var(--ink)}
     }
     list.forEach(function(g, i){
       var card = document.createElement("article");
-      card.className = "gcard" + (hitSlug===g.s ? " hit" : "");
+      card.className = "gcard" + (g.f ? " f" : "") + (hitSlug===g.s ? " hit" : "");
       card.style.animationDelay = Math.min(i*22, 400) + "ms";
       card.setAttribute("data-slug", g.s);
       card.innerHTML = '<div class="gmeta"><span class="gtag">'+TL[g.d]+'</span><span class="gcity">'+g.c+'</span></div>'
         + '<h3>'+g.n+'</h3>'
         + '<a class="glink" href="'+BASE+g.s+'.html" target="_blank" rel="noopener">Open live preview <i>&#8594;</i></a>'
+        + (g.f && !featuredMode ? '<i class="gnew">New</i>' : '')
         + (hitSlug===g.s ? '<span class="yours">This one\'s yours</span>' : '');
       wall.appendChild(card);
     });
-    note.textContent = "Showing " + list.length + " of " + GYMS.length + " live concepts - every card opens a real preview built for that gym.";
+    note.textContent = featuredMode
+      ? "Showing the " + list.length + " latest concepts of " + GYMS.length + " live previews - open the full wall when you're ready."
+      : "Showing " + list.length + " of " + GYMS.length + " live concepts - every card opens a real preview built for that gym.";
+    if(wallLabel) wallLabel.textContent = featuredMode ? "Latest additions" : (filtersOn() ? "Filtered concepts" : "All concepts");
+    if(moreBtn){
+      if(featuredMode){ moreBtn.style.display = "inline-flex"; moreBtn.innerHTML = 'View all ' + GYMS.length + ' concepts <i>&#8594;</i>'; }
+      else if(filtersOn()){ moreBtn.style.display = "inline-flex"; moreBtn.innerHTML = 'Clear filters &#183; view all ' + GYMS.length; }
+      else if(showAll){ moreBtn.style.display = "inline-flex"; moreBtn.innerHTML = 'Show latest only <i>&#8593;</i>'; }
+      else { moreBtn.style.display = "none"; }
+    }
   }
+
+  if(moreBtn) moreBtn.addEventListener("click", function(){
+    if(filtersOn()){
+      st.d = "all"; st.r = "All regions"; st.q = "";
+      if(search) search.value = "";
+      Array.prototype.forEach.call(document.querySelectorAll("#discTabs .dtab"), function(t){ t.classList.toggle("on", t.getAttribute("data-d")==="all"); });
+      Array.prototype.forEach.call(chipsBox.children, function(c){ c.classList.toggle("on", c.getAttribute("data-r")==="All regions"); });
+      showAll = true;
+    } else {
+      showAll = !showAll;
+    }
+    render();
+  });
 
   function highlight(slug, scroll){
     var card = wall.querySelector('[data-slug="'+slug+'"]');
