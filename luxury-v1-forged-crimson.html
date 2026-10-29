@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SAMVIRO — Forged in Iron · Premium web design for UK gyms</title>
+<meta name="description" content="Cinematic dark-luxury websites and AI automation for the UK's most serious gyms. Free preview, one-off pricing from £500.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Playfair+Display:ital,wght@1,400;1,500;1,600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#171717; --deep:#06110C; --accent:#A31C18; --accent-rgb:163,28,24;
+  --ink:#F2EFE9; --muted:#9C9891; --line:rgba(255,255,255,.09);
+  --glass:linear-gradient(160deg,rgba(255,255,255,.065),rgba(255,255,255,.02));
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:90px}
+body{background:var(--bg);color:var(--ink);font:16px/1.6 'Archivo',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+body::after{content:"";position:fixed;inset:0;z-index:2;pointer-events:none;opacity:.05;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='0.55'/%3E%3C/svg%3E")}
+::selection{background:var(--accent);color:#fff}
+a{color:inherit;text-decoration:none}
+img{max-width:100%}
+
+/* ---- cursor glow ---- */
+#glow{position:fixed;width:520px;height:520px;border-radius:50%;pointer-events:none;z-index:1;
+  background:radial-gradient(circle,rgba(var(--accent-rgb),.14) 0%,rgba(var(--accent-rgb),.05) 38%,transparent 68%);
+  transform:translate(-50%,-50%);mix-blend-mode:screen;transition:opacity .4s;filter:blur(2px)}
+#dot{position:fixed;width:6px;height:6px;border-radius:50%;background:var(--ink);pointer-events:none;z-index:60;
+  transform:translate(-50%,-50%);mix-blend-mode:difference;transition:width .25s,height .25s}
+body.hot #dot{width:34px;height:34px;background:var(--accent)}
+@media(hover:none){#glow,#dot{display:none}}
+
+/* ---- nav ---- */
+nav{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;align-items:center;justify-content:space-between;
+  padding:20px clamp(20px,4vw,52px);transition:background .4s,padding .4s,backdrop-filter .4s}
+nav.stuck{background:rgba(10,10,11,.72);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);padding-top:12px;padding-bottom:12px;border-bottom:1px solid var(--line)}
+.brand{display:flex;align-items:center;gap:11px;font-weight:800;letter-spacing:.34em;font-size:.83rem}
+.brand i{width:26px;height:26px;border-radius:7px;background:linear-gradient(145deg,var(--accent),var(--deep));display:inline-block;position:relative;box-shadow:0 0 22px rgba(var(--accent-rgb),.45)}
+.brand i::after{content:"";position:absolute;inset:6px;border-radius:3px;border:1.5px solid rgba(255,255,255,.85)}
+.navlinks{display:flex;gap:30px;font-size:.78rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+.navlinks a{transition:color .25s;position:relative}
+.navlinks a::after{content:"";position:absolute;left:0;bottom:-6px;width:0;height:1px;background:var(--accent);transition:width .3s}
+.navlinks a:hover{color:var(--ink)}
+.navlinks a:hover::after{width:100%}
+.navright{display:flex;align-items:center;gap:12px}
+#sound{width:42px;height:42px;border-radius:50%;border:1px solid var(--line);background:rgba(255,255,255,.04);
+  color:var(--ink);font-size:15px;cursor:pointer;display:grid;place-items:center;transition:.3s;backdrop-filter:blur(10px)}
+#sound:hover{border-color:var(--accent);box-shadow:0 0 20px rgba(var(--accent-rgb),.35)}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:13px 26px;border-radius:100px;font-weight:700;font-size:.8rem;
+  letter-spacing:.14em;text-transform:uppercase;border:none;cursor:pointer;transition:transform .3s,box-shadow .3s;will-change:transform}
+.btn.primary{background:linear-gradient(120deg,var(--accent),#D94A3A);color:#fff;box-shadow:0 12px 40px -8px rgba(var(--accent-rgb),.55)}
+.btn.primary:hover{transform:translateY(-2px);box-shadow:0 18px 54px -8px rgba(var(--accent-rgb),.7)}
+.btn.ghost{background:rgba(255,255,255,.05);border:1px solid var(--line);color:var(--ink);backdrop-filter:blur(10px)}
+.btn.ghost:hover{border-color:var(--accent);transform:translateY(-2px)}
+.btn.sm{padding:10px 20px;font-size:.72rem}
+
+/* ---- hero ---- */
+.hero{position:relative;min-height:100svh;display:flex;align-items:center;overflow:hidden;isolation:isolate;
+  background:
+   radial-gradient(1100px 620px at 78% 18%,rgba(var(--accent-rgb),.16),transparent 62%),
+   radial-gradient(900px 700px at 12% 88%,rgba(6,17,12,.85),transparent 60%),
+   linear-gradient(180deg,#0c0c0d 0%,var(--bg) 55%,var(--bg) 100%)}
+#stage{position:absolute;inset:0;z-index:0}
+#stage canvas{width:100%;height:100%;display:block}
+.stage-fallback{position:absolute;inset:0;display:none;place-items:center;z-index:0;
+  background:radial-gradient(640px 420px at 72% 42%,rgba(var(--accent-rgb),.22),transparent 65%),linear-gradient(200deg,var(--deep),var(--bg) 70%)}
+.stage-fallback::after{content:"";width:min(46vw,420px);aspect-ratio:1;border-radius:50%;
+  border:1.5px solid rgba(var(--accent-rgb),.5);box-shadow:0 0 120px rgba(var(--accent-rgb),.35),inset 0 0 80px rgba(0,0,0,.7);
+  background:conic-gradient(from 210deg,transparent,rgba(255,255,255,.09),transparent 40%)}
+.hero-inner{position:relative;z-index:3;width:100%;padding:150px clamp(20px,4.5vw,72px) 96px;max-width:1500px;margin:0 auto}
+.eyebrow{display:inline-flex;align-items:center;gap:12px;font-size:.7rem;font-weight:700;letter-spacing:.3em;
+  text-transform:uppercase;color:var(--muted);margin-bottom:30px}
+.eyebrow::before{content:"";width:34px;height:1px;background:var(--accent);box-shadow:0 0 14px rgba(var(--accent-rgb),.9)}
+.hero h1{font-size:clamp(3.1rem,9.2vw,8.6rem);font-weight:900;line-height:.9;letter-spacing:-.045em;text-transform:uppercase;max-width:11ch}
+.hero h1 .row{display:block;overflow:hidden}
+.hero h1 .row span{display:inline-block;transform:translateY(112%);animation:rise 1.1s cubic-bezier(.2,.75,.2,1) forwards}
+.hero h1 .row:nth-child(2) span{animation-delay:.12s}
+.hero h1 em{font-family:'Playfair Display',Georgia,serif;font-style:italic;font-weight:500;text-transform:none;letter-spacing:-.01em;
+  background:linear-gradient(100deg,var(--ink) 10%,var(--accent) 55%,#D94A3A 100%);
+  -webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 6px 44px rgba(var(--accent-rgb),.45))}
+.hero .sub{max-width:52ch;color:var(--muted);font-size:clamp(1rem,1.35vw,1.14rem);margin:34px 0 38px}
+.hero .sub b{color:var(--ink);font-weight:600}
+.cta-row{display:flex;flex-wrap:wrap;gap:14px;align-items:center}
+.hero-stats{display:flex;flex-wrap:wrap;gap:clamp(22px,4vw,54px);margin-top:64px;padding-top:30px;border-top:1px solid var(--line);max-width:760px}
+.hstat b{display:block;font-size:clamp(1.5rem,2.6vw,2.1rem);font-weight:800;letter-spacing:-.02em}
+.hstat b i{font-style:normal;color:var(--accent)}
+.hstat span{font-size:.66rem;letter-spacing:.24em;text-transform:uppercase;color:var(--muted)}
+.scroll-hint{position:absolute;bottom:30px;left:50%;transform:translateX(-50%);z-index:4;font-size:.62rem;letter-spacing:.34em;
+  text-transform:uppercase;color:var(--muted);display:flex;flex-direction:column;align-items:center;gap:10px}
+.scroll-hint::after{content:"";width:1px;height:44px;background:linear-gradient(var(--accent),transparent);animation:drip 2.2s ease-in-out infinite}
+@keyframes rise{to{transform:translateY(0)}}
+@keyframes drip{0%{transform:scaleY(0);transform-origin:top}45%{transform:scaleY(1);transform-origin:top}55%{transform:scaleY(1);transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+.hero-title-blur{position:absolute;z-index:2;pointer-events:none;font-size:clamp(3.1rem,9.2vw,8.6rem);font-weight:900;line-height:.9;
+  letter-spacing:-.045em;text-transform:uppercase;color:rgba(var(--accent-rgb),.16);filter:blur(26px);white-space:nowrap;
+  right:clamp(20px,4vw,60px);bottom:12%;animation:drift 9s ease-in-out infinite alternate}
+@keyframes drift{from{transform:translateX(0)}to{transform:translateX(-48px)}}
+
+/* ---- marquee ---- */
+.marquee{border-block:1px solid var(--line);padding:17px 0;overflow:hidden;background:rgba(255,255,255,.017)}
+.mq-track{display:flex;gap:56px;width:max-content;animation:mq 30s linear infinite;font-size:.72rem;letter-spacing:.34em;text-transform:uppercase;color:var(--muted)}
+.mq-track b{color:var(--accent);font-weight:400}
+@keyframes mq{to{transform:translateX(-50%)}}
+
+/* ---- sections ---- */
+section{position:relative;z-index:3;padding:clamp(72px,10vw,130px) clamp(20px,4.5vw,72px)}
+.wrap{max-width:1280px;margin:0 auto}
+.k{display:inline-flex;align-items:center;gap:12px;font-size:.68rem;font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:var(--accent);margin-bottom:22px}
+.k::before{content:"";width:26px;height:1px;background:var(--accent);box-shadow:0 0 12px rgba(var(--accent-rgb),.9)}
+h2{font-size:clamp(2rem,4.6vw,3.6rem);font-weight:800;letter-spacing:-.035em;line-height:1.02;text-transform:uppercase;max-width:16ch}
+h2 em{font-family:'Playfair Display',Georgia,serif;font-style:italic;font-weight:500;text-transform:none;color:var(--accent)}
+.lead{color:var(--muted);max-width:56ch;margin-top:18px}
+.rv{opacity:0;transform:translateY(34px);transition:opacity .9s cubic-bezier(.2,.7,.2,1),transform .9s cubic-bezier(.2,.7,.2,1)}
+.rv.in{opacity:1;transform:none}
+
+/* ---- tabs showcase ---- */
+.showcase{display:grid;grid-template-columns:.85fr 1.15fr;gap:clamp(26px,4vw,58px);align-items:center;margin-top:56px}
+.tabcol{display:flex;flex-direction:column;gap:12px}
+.tab{position:relative;text-align:left;cursor:pointer;border:1px solid var(--line);border-radius:16px;padding:22px 24px;
+  background:rgba(255,255,255,.022);transition:.35s;color:inherit;font-family:inherit}
+.tab:hover{border-color:rgba(var(--accent-rgb),.4)}
+.tab.on{background:var(--glass);border-color:rgba(var(--accent-rgb),.55);box-shadow:0 18px 50px -18px rgba(var(--accent-rgb),.4)}
+.tab h3{font-size:1.05rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;display:flex;align-items:center;gap:12px}
+.tab h3 i{font-style:normal;font-size:.62rem;color:var(--accent);letter-spacing:.2em}
+.tab p{font-size:.85rem;color:var(--muted);margin-top:6px;max-width:44ch}
+.panel{position:relative;border-radius:24px;overflow:hidden;border:1px solid var(--line);min-height:440px;
+  background:linear-gradient(165deg,rgba(255,255,255,.05),rgba(255,255,255,.012))}
+.panel .art{position:absolute;inset:0;transition:opacity .6s,transform .8s}
+.panel .art svg{width:100%;height:100%;display:block}
+.panel .veil{position:absolute;inset:0;background:linear-gradient(200deg,transparent 30%,rgba(10,10,11,.86) 88%)}
+.panel .pbody{position:absolute;left:0;right:0;bottom:0;padding:28px 30px;z-index:2}
+.panel .pbody .tag{display:inline-block;font-size:.6rem;letter-spacing:.28em;text-transform:uppercase;color:var(--accent);
+  border:1px solid rgba(var(--accent-rgb),.45);border-radius:100px;padding:5px 12px;margin-bottom:12px}
+.panel .pbody h4{font-size:clamp(1.4rem,2.4vw,1.9rem);font-weight:800;letter-spacing:-.02em;text-transform:uppercase}
+.panel .pbody p{font-size:.88rem;color:var(--muted);margin-top:6px;max-width:46ch}
+.panel .chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+.panel .chips span{font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;color:var(--ink);background:rgba(255,255,255,.07);
+  border:1px solid var(--line);padding:6px 11px;border-radius:100px}
+.panel .plink{position:absolute;top:20px;right:22px;z-index:3;font-size:.62rem;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);
+  border:1px solid var(--line);padding:8px 14px;border-radius:100px;background:rgba(10,10,11,.4);backdrop-filter:blur(8px);transition:.3s}
+.panel .plink:hover{color:var(--ink);border-color:var(--accent)}
+
+/* ---- packages ---- */
+.packs{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:56px;align-items:stretch}
+.pack{position:relative;border:1px solid var(--line);border-radius:22px;padding:34px 30px;background:var(--glass);
+  display:flex;flex-direction:column;backdrop-filter:blur(14px);transition:transform .45s,box-shadow .45s,border-color .45s}
+.pack:hover{transform:translateY(-6px)}
+.pack.hot{border-color:rgba(var(--accent-rgb),.6);box-shadow:0 30px 90px -30px rgba(var(--accent-rgb),.5);
+  background:linear-gradient(165deg,rgba(var(--accent-rgb),.14),rgba(255,255,255,.02) 55%)}
+.pack.hot::before{content:"MOST CHOSEN";position:absolute;top:-11px;left:50%;transform:translateX(-50%);font-size:.56rem;
+  letter-spacing:.3em;padding:6px 14px;border-radius:100px;background:linear-gradient(120deg,var(--accent),#D94A3A);color:#fff;font-weight:700}
+.pack .tier{font-size:.64rem;letter-spacing:.3em;text-transform:uppercase;color:var(--muted)}
+.pack .pname{font-size:1.35rem;font-weight:800;text-transform:uppercase;letter-spacing:.02em;margin:10px 0 4px}
+.pack .price{font-family:'Playfair Display',Georgia,serif;font-size:clamp(2.6rem,4vw,3.4rem);font-weight:500;line-height:1;margin:16px 0 4px}
+.pack .price sup{font-size:1.1rem;vertical-align:top;margin-right:2px;color:var(--accent)}
+.pack .once{font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
+.pack ul{list-style:none;margin:22px 0 26px;display:flex;flex-direction:column;gap:11px;flex:1}
+.pack li{font-size:.88rem;color:var(--muted);display:flex;gap:10px;align-items:flex-start}
+.pack li::before{content:"";flex:none;width:15px;height:15px;margin-top:3px;border-radius:50%;
+  background:radial-gradient(circle at 32% 30%,rgba(var(--accent-rgb),.9),rgba(var(--accent-rgb),.25));box-shadow:0 0 12px rgba(var(--accent-rgb),.55)}
+.pack .btn{width:100%;justify-content:center}
+
+/* ---- automation ---- */
+.auto-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:56px}
+.acard{border:1px solid var(--line);border-radius:18px;padding:26px 24px;background:var(--glass);backdrop-filter:blur(12px);transition:border-color .35s,transform .35s}
+.acard:hover{border-color:rgba(var(--accent-rgb),.45);transform:translateY(-4px)}
+.acard .ic{width:42px;height:42px;border-radius:12px;display:grid;place-items:center;margin-bottom:18px;
+  background:linear-gradient(145deg,rgba(var(--accent-rgb),.2),rgba(var(--accent-rgb),.05));border:1px solid rgba(var(--accent-rgb),.3);color:var(--accent)}
+.acard h3{font-size:.95rem;font-weight:700;text-transform:uppercase;letter-spacing:.05em}
+.acard p{font-size:.82rem;color:var(--muted);margin-top:7px}
+
+/* ---- process ---- */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:56px}
+.step{border-top:1px solid var(--line);padding-top:26px;position:relative}
+.step b{font-family:'Playfair Display',Georgia,serif;font-style:italic;font-size:2.4rem;color:var(--accent);display:block;line-height:1;margin-bottom:14px}
+.step h3{font-size:.95rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em}
+.step p{font-size:.85rem;color:var(--muted);margin-top:8px}
+
+/* ---- final cta ---- */
+.final{position:relative;overflow:hidden;text-align:center;padding-block:clamp(90px,12vw,150px);
+  background:radial-gradient(800px 420px at 50% 0%,rgba(var(--accent-rgb),.16),transparent 62%),linear-gradient(180deg,var(--bg),var(--deep))}
+.final h2{margin:0 auto;max-width:18ch}
+.final .lead{margin:20px auto 36px}
+.final .cta-row{justify-content:center}
+
+/* ---- footer ---- */
+footer{border-top:1px solid var(--line);padding:38px clamp(20px,4.5vw,72px);display:flex;flex-wrap:wrap;gap:16px;
+  align-items:center;justify-content:space-between;font-size:.78rem;color:var(--muted);background:#0d0d0e}
+footer .brand{font-size:.7rem}
+footer a{color:var(--muted);transition:color .25s}
+footer a:hover{color:var(--ink)}
+
+/* ---- modal ---- */
+#modal{position:fixed;inset:0;z-index:100;display:grid;place-items:center;padding:20px;background:rgba(6,6,7,.72);
+  backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);opacity:0;pointer-events:none;transition:opacity .4s}
+#modal.open{opacity:1;pointer-events:auto}
+.modal-card{width:min(560px,100%);max-height:92svh;overflow:auto;border-radius:24px;border:1px solid rgba(var(--accent-rgb),.35);
+  background:linear-gradient(170deg,rgba(28,28,30,.97),rgba(14,14,16,.99));padding:38px 36px;position:relative;
+  transform:translateY(26px) scale(.97);transition:transform .45s cubic-bezier(.2,.8,.2,1);box-shadow:0 60px 140px -30px rgba(0,0,0,.8)}
+#modal.open .modal-card{transform:none}
+.modal-card .x{position:absolute;top:16px;right:16px;width:36px;height:36px;border-radius:50%;border:1px solid var(--line);
+  background:rgba(255,255,255,.05);color:var(--ink);cursor:pointer;font-size:15px;transition:.3s}
+.modal-card .x:hover{border-color:var(--accent);transform:rotate(90deg)}
+.modal-card h3{font-size:1.7rem;font-weight:800;text-transform:uppercase;letter-spacing:-.02em;line-height:1.05}
+.modal-card h3 em{font-family:'Playfair Display',Georgia,serif;font-style:italic;font-weight:500;text-transform:none;color:var(--accent)}
+.modal-card .ms{color:var(--muted);font-size:.88rem;margin:10px 0 24px}
+.field{display:flex;flex-direction:column;gap:7px;margin-bottom:14px}
+.field label{font-size:.62rem;letter-spacing:.24em;text-transform:uppercase;color:var(--muted)}
+.field input,.field select,.field textarea{background:rgba(255,255,255,.045);border:1px solid var(--line);border-radius:12px;
+  padding:13px 15px;color:var(--ink);font:inherit;font-size:.92rem;outline:none;transition:border-color .25s,box-shadow .25s;width:100%}
+.field input:focus,.field select:focus,.field textarea:focus{border-color:rgba(var(--accent-rgb),.7);box-shadow:0 0 0 3px rgba(var(--accent-rgb),.15)}
+.field textarea{resize:vertical;min-height:84px}
+.field select{appearance:none;background-image:linear-gradient(45deg,transparent 50%,var(--muted) 50%),linear-gradient(135deg,var(--muted) 50%,transparent 50%);background-position:calc(100% - 20px) 55%,calc(100% - 15px) 55%;background-size:5px 5px;background-repeat:no-repeat}
+.formnote{font-size:.72rem;color:var(--muted);margin-top:14px;text-align:center}
+#formok{display:none;font-size:.85rem;color:var(--accent);margin-top:12px;text-align:center}
+@media(max-width:980px){
+  .showcase{grid-template-columns:1fr}
+  .packs{grid-template-columns:1fr;max-width:520px;margin-inline:auto}
+  .auto-grid{grid-template-columns:1fr 1fr}
+  .steps{grid-template-columns:1fr}
+  .navlinks{display:none}
+  .hero-stats{gap:26px}
+}
+@media(max-width:560px){
+  .auto-grid{grid-template-columns:1fr}
+  .modal-card{padding:30px 22px}
+  .hero-inner{padding-top:120px}
+}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.001s!important;transition-duration:.001s!important}
+  .rv{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+<div id="glow"></div><div id="dot"></div>
+
+<nav id="nav">
+  <a class="brand" href="#top"><i></i>SAMVIRO</a>
+  <div class="navlinks">
+    <a href="#showcase">Showcase</a><a href="#packages">Packages</a><a href="#automation">AI Automation</a><a href="#process">Process</a>
+  </div>
+  <div class="navright">
+    <button id="sound" aria-label="Toggle sound" title="Sound on/off">&#128263;</button>
+    <button class="btn primary sm" data-open>Request preview</button>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div id="stage"></div>
+  <div class="stage-fallback" id="stagefb"></div>
+  <div class="hero-title-blur" aria-hidden="true">IRON</div>
+  <div class="hero-inner">
+    <p class="eyebrow">Premium web design × AI automation — UK gyms</p>
+    <h1>
+      <span class="row"><span>Forged</span></span>
+      <span class="row"><span><em>in Iron</em></span></span>
+    </h1>
+    <p class="sub"><b>Cinematic websites and AI automation for the UK's most serious gyms.</b> Designed like a Porsche film, built to load in under a second, priced like a one-off — from £500.</p>
+    <div class="cta-row">
+      <button class="btn primary" data-open>Request your preview</button>
+      <a class="btn ghost" href="#packages">See packages</a>
+    </div>
+    <div class="hero-stats">
+      <div class="hstat"><b>50<i>+</i></b><span>Live gym previews</span></div>
+      <div class="hstat"><b>5</b><span>UK cities</span></div>
+      <div class="hstat"><b>&pound;500&ndash;650</b><span>One-off build</span></div>
+      <div class="hstat"><b>72<i>h</i></b><span>First draft</span></div>
+    </div>
+  </div>
+  <div class="scroll-hint">Scroll</div>
+</header>
+
+<div class="marquee" aria-hidden="true">
+  <div class="mq-track">
+    <span>Cinematic design</span><b>&#9670;</b><span>AI automation</span><b>&#9670;</b><span>Built for gyms</span><b>&#9670;</b><span>Loaded in under a second</span><b>&#9670;</b><span>No subscriptions</span><b>&#9670;</b>
+    <span>Cinematic design</span><b>&#9670;</b><span>AI automation</span><b>&#9670;</b><span>Built for gyms</span><b>&#9670;</b><span>Loaded in under a second</span><b>&#9670;</b><span>No subscriptions</span><b>&#9670;</b>
+  </div>
+</div>
+
+<section id="showcase">
+  <div class="wrap">
+    <p class="k rv">The Showcase</p>
+    <h2 class="rv">Three disciplines.<br><em>One standard.</em></h2>
+    <p class="lead rv">Every gym gets its own stage. Pick a discipline to preview how your floor, your energy and your coaching translate into a cinematic digital experience.</p>
+    <div class="showcase">
+      <div class="tabcol rv">
+        <button class="tab on" data-tab="0"><h3><i>01</i> Boxing</h3><p>Ring heritage, carded squads and fight nights, framed like a title bout.</p></button>
+        <button class="tab" data-tab="1"><h3><i>02</i> Strength</h3><p>Iron, chalk and heavy sets. A layout that feels as solid as the plates.</p></button>
+        <button class="tab" data-tab="2"><h3><i>03</i> Conditioning</h3><p>Class timetables, trials and membership flows that convert on mobile.</p></button>
+      </div>
+      <div class="panel rv" id="panel">
+        <a class="plink" href="https://samviro.github.io/gym-refresh-previews/" target="_blank" rel="noopener">Open live previews &rarr;</a>
+        <div class="art" id="art"></div>
+        <div class="veil"></div>
+        <div class="pbody">
+          <span class="tag" id="p-tag">Discipline 01</span>
+          <h4 id="p-title">The ring is the brand</h4>
+          <p id="p-desc">Full-bleed fight-night imagery, squad rosters and a booking flow that fills your beginners' sessions without a single phone call.</p>
+          <div class="chips" id="p-chips"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="packages">
+  <div class="wrap">
+    <p class="k rv">Packages</p>
+    <h2 class="rv">Premium, priced <em>honestly.</em></h2>
+    <p class="lead rv">One-off prices between &pound;500 and &pound;650. You own the site outright. No platform fees, no per-month hostage situations.</p>
+    <div class="packs">
+      <article class="pack rv">
+        <span class="tier">Tier 01</span>
+        <h3 class="pname">Essential</h3>
+        <div class="price"><sup>&pound;</sup>500</div>
+        <span class="once">One-off &middot; 3&ndash;5 page cinematic site</span>
+        <ul>
+          <li>Custom dark-luxury design, no templates</li>
+          <li>Mobile-first and sub-second loading</li>
+          <li>Photo direction for your own gym shots</li>
+          <li>Contact form, map and opening hours</li>
+          <li>First draft in 72 hours</li>
+        </ul>
+        <button class="btn ghost" data-open data-tier="Essential &pound;500">Choose Essential</button>
+      </article>
+      <article class="pack hot rv">
+        <span class="tier">Tier 02</span>
+        <h3 class="pname">Signature</h3>
+        <div class="price"><sup>&pound;</sup>595</div>
+        <span class="once">One-off &middot; the full flagship build</span>
+        <ul>
+          <li>Everything in Essential</li>
+          <li>Live class timetable and booking links</li>
+          <li>Interactive membership calculator</li>
+          <li>Gallery lightbox and trainer profiles</li>
+          <li>SEO, analytics and a 7-day launch</li>
+        </ul>
+        <button class="btn primary" data-open data-tier="Signature &pound;595">Choose Signature</button>
+      </article>
+      <article class="pack rv">
+        <span class="tier">Tier 03</span>
+        <h3 class="pname">Apex</h3>
+        <div class="price"><sup>&pound;</sup>650</div>
+        <span class="once">One-off &middot; site + AI automation suite</span>
+        <ul>
+          <li>Everything in Signature</li>
+          <li>AI enquiry triage across email and DMs</li>
+          <li>Automated trial follow-ups and reminders</li>
+          <li>Review engine that asks at the right moment</li>
+          <li>30 days of aftercare and tweaks</li>
+        </ul>
+        <button class="btn ghost" data-open data-tier="Apex &pound;650">Choose Apex</button>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="automation">
+  <div class="wrap">
+    <p class="k rv">AI Automation</p>
+    <h2 class="rv">Your gym answers <em>while you coach.</em></h2>
+    <p class="lead rv">The Apex package wires your website into an assistant that never misses a lead, never forgets a follow-up and never sleeps.</p>
+    <div class="auto-grid">
+      <div class="acard rv"><div class="ic">&#9993;</div><h3>Enquiry triage</h3><p>New enquiries get a warm, accurate reply in seconds, then land in your inbox already sorted by intent.</p></div>
+      <div class="acard rv"><div class="ic">&#9201;</div><h3>Booking follow-ups</h3><p>Trials that go quiet get a nudge. No-shows get rebooked. Your calendar fills itself.</p></div>
+      <div class="acard rv"><div class="ic">&#9733;</div><h3>Review engine</h3><p>Happy members are asked for a Google review at the exact moment they are happiest.</p></div>
+      <div class="acard rv"><div class="ic">&#9788;</div><h3>Night reception</h3><p>Hours, prices, parking, kids classes: answered 24/7 in your gym's own tone of voice.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="process">
+  <div class="wrap">
+    <p class="k rv">The Process</p>
+    <h2 class="rv">From concept to <em>launch.</em></h2>
+    <div class="steps">
+      <div class="step rv"><b>01</b><h3>Preview</h3><p>I build a free cinematic concept of your gym's new site before you spend a penny. If you don't love it, nothing owed.</p></div>
+      <div class="step rv"><b>02</b><h3>Build</h3><p>You approve the direction, I perfect the details: copy, photography, pricing, timetable. First draft in 72 hours, live within a week.</p></div>
+      <div class="step rv"><b>03</b><h3>Automate</h3><p>Apex clients get their AI assistant trained on the gym, wired to bookings and switched on the day the site launches.</p></div>
+    </div>
+  </div>
+</section>
+
+<div class="final">
+  <div class="wrap">
+    <p class="k rv" style="justify-content:center">Your move</p>
+    <h2 class="rv">Your gym is already <em>exceptional.</em></h2>
+    <p class="lead rv" style="margin-inline:auto">Make the website prove it. Free preview, one-off price, live in a week.</p>
+    <div class="cta-row rv">
+      <button class="btn primary" data-open>Request your preview</button>
+      <a class="btn ghost" href="mailto:samviroanimations@gmail.com">Email Samviro</a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <a class="brand" href="#top"><i></i>SAMVIRO</a>
+  <span>Premium web design &times; AI automation for UK gyms</span>
+  <span><a href="https://samviro.github.io/gym-refresh-previews/" target="_blank" rel="noopener">Live previews</a> &middot; <a href="mailto:samviroanimations@gmail.com">samviroanimations@gmail.com</a></span>
+</footer>
+
+<div id="modal" role="dialog" aria-modal="true" aria-label="Request a preview">
+  <div class="modal-card">
+    <button class="x" id="mclose" aria-label="Close">&#10005;</button>
+    <h3>Request your <em>preview</em></h3>
+    <p class="ms">Tell me about your gym. I'll reply within 24 hours with your free cinematic concept.</p>
+    <form id="reqform">
+      <div class="field"><label for="f-name">Your name</label><input id="f-name" name="name" required placeholder="Alex Carter"></div>
+      <div class="field"><label for="f-gym">Gym name</label><input id="f-gym" name="gym" required placeholder="Iron House ABC"></div>
+      <div class="field"><label for="f-email">Email</label><input id="f-email" name="email" type="email" required placeholder="you@gym.co.uk"></div>
+      <div class="field"><label for="f-tier">Package</label>
+        <select id="f-tier" name="tier">
+          <option>Not sure yet, show me options</option>
+          <option>Essential &pound;500</option>
+          <option selected>Signature &pound;595</option>
+          <option>Apex &pound;650 (with AI automation)</option>
+        </select>
+      </div>
+      <div class="field"><label for="f-msg">Anything specific?</label><textarea id="f-msg" name="msg" placeholder="City, current website, what you'd love to fix..."></textarea></div>
+      <button class="btn primary" type="submit" style="width:100%;justify-content:center">Send request</button>
+      <p class="formnote">Opens your email app with everything pre-filled. No data is stored on this page.</p>
+      <p id="formok">Request ready &mdash; your email app should be opening.</p>
+    </form>
+  </div>
+</div>
+<script>
+(function(){
+  "use strict";
+  var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  /* ---------- audio engine ---------- */
+  var AC=null, muted=true;
+  function ac(){ if(!AC){ try{ AC=new (window.AudioContext||window.webkitAudioContext)(); }catch(e){} } return AC; }
+  function tone(freq,dur,type,gain,slide){
+    if(muted) return; var c=ac(); if(!c) return;
+    var o=c.createOscillator(), g=c.createGain();
+    o.type=type||"sine"; o.frequency.setValueAtTime(freq,c.currentTime);
+    if(slide) o.frequency.exponentialRampToValueAtTime(slide,c.currentTime+dur);
+    g.gain.setValueAtTime(gain||0.05,c.currentTime);
+    g.gain.exponentialRampToValueAtTime(0.0001,c.currentTime+dur);
+    o.connect(g).connect(c.destination); o.start(); o.stop(c.currentTime+dur);
+  }
+  var sndBtn=document.getElementById("sound");
+  sndBtn.addEventListener("click",function(){
+    muted=!muted;
+    if(!muted){ var c=ac(); if(c&&c.state==="suspended") c.resume(); tone(880,0.08,"triangle",0.06,1320); }
+    sndBtn.innerHTML = muted ? "&#128263;" : "&#128266;";
+  });
+  document.querySelectorAll(".btn, .tab").forEach(function(el){
+    el.addEventListener("mouseenter",function(){ tone(1150,0.045,"sine",0.025); });
+  });
+  document.querySelectorAll("[data-open]").forEach(function(el){
+    el.addEventListener("click",function(){ tone(320,0.16,"sine",0.07,180); });
+  });
+
+  /* ---------- cursor ---------- */
+  var glow=document.getElementById("glow"), dot=document.getElementById("dot");
+  var gx=innerWidth/2, gy=innerHeight/2, dx=gx, dy=gy, tx=gx, ty=gy;
+  addEventListener("pointermove",function(e){ tx=e.clientX; ty=e.clientY; dx=e.clientX; dy=e.clientY; },{passive:true});
+  (function loop(){
+    gx+=(tx-gx)*0.09; gy+=(ty-gy)*0.09;
+    glow.style.left=gx+"px"; glow.style.top=gy+"px";
+    dot.style.left=dx+"px"; dot.style.top=dy+"px";
+    requestAnimationFrame(loop);
+  })();
+  document.querySelectorAll("a,button,.tab").forEach(function(el){
+    el.addEventListener("mouseenter",function(){ document.body.classList.add("hot"); });
+    el.addEventListener("mouseleave",function(){ document.body.classList.remove("hot"); });
+  });
+
+  /* ---------- nav + reveal ---------- */
+  var nav=document.getElementById("nav");
+  addEventListener("scroll",function(){ nav.classList.toggle("stuck", scrollY>40); },{passive:true});
+  var io=new IntersectionObserver(function(es){
+    es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add("in"); io.unobserve(e.target); } });
+  },{threshold:0.12});
+  document.querySelectorAll(".rv").forEach(function(el){ io.observe(el); });
+
+  /* ---------- showcase tabs ---------- */
+  var TABS=[
+    {tag:"Discipline 01",title:"The ring is the brand",desc:"Full-bleed fight-night imagery, squad rosters and a booking flow that fills your beginners sessions without a single phone call.",
+     chips:["Fight-night hero","Squad profiles","Trial booking"]},
+    {tag:"Discipline 02",title:"Built from iron",desc:"Heavy, grounded layouts that feel like walking into the free-weights hall. Membership tiers and day passes priced right on the page.",
+     chips:["Membership calculator","Day passes","Gallery lightbox"]},
+    {tag:"Discipline 03",title:"Energy that converts",desc:"Class timetables, smooth-scrolling schedules and a mobile experience fast enough to book from the changing room.",
+     chips:["Live timetable","Sub-second load","Mobile-first"]}
+  ];
+  var artWrap=document.getElementById("art");
+  function paintArt(i){
+    var hues=["#A31C18","#C8452E","#8E1A16"];
+    artWrap.innerHTML='<svg viewBox="0 0 800 560" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">'
+      +'<defs><radialGradient id="g'+i+'" cx="'+[68,30,50][i]+'%" cy="'+[30,60,42][i]+'%" r="80%">'
+      +'<stop offset="0%" stop-color="'+hues[i]+'" stop-opacity=".55"/><stop offset="55%" stop-color="#171717" stop-opacity=".2"/><stop offset="100%" stop-color="#171717"/></radialGradient>'
+      +'<linearGradient id="l'+i+'" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="rgba(255,255,255,.10)"/><stop offset="100%" stop-color="rgba(255,255,255,0)"/></linearGradient></defs>'
+      +'<rect width="800" height="560" fill="url(#g'+i+')"/>'
+      +'<g opacity=".5" stroke="rgba(255,255,255,.14)" fill="none">'
+      +'<circle cx="'+[520,240,400][i]+'" cy="'+[210,190,240][i]+'" r="150"/><circle cx="'+[520,240,400][i]+'" cy="'+[210,190,240][i]+'" r="90"/>'
+      +'<path d="M0 '+[420,470,430][i]+' Q 400 '+[300,330,320][i]+' 800 '+[380,450,400][i]+'" stroke-width="1.2"/></g>'
+      +'<g opacity=".85">'
+      +'<rect x="60" y="70" width="150" height="8" rx="4" fill="rgba(255,255,255,.25)"/>'
+      +'<rect x="60" y="92" width="90" height="8" rx="4" fill="rgba(255,255,255,.12)"/>'
+      +'<rect x="60" y="[H]" width="230" height="10" rx="5" fill="'+hues[i]+'" opacity=".8"/>'
+      +'</g>'
+      +'<circle cx="'+[660,180,610][i]+'" cy="'+[120,120,140][i]+'" r="5" fill="'+hues[i]+'"/>'
+      +'<circle cx="'+[700,140,660][i]+'" cy="'+[170,90,190][i]+'" r="3" fill="rgba(255,255,255,.5)"/>'
+      +'</svg>';
+  }
+  var tabs=document.querySelectorAll(".tab");
+  function setTab(i){
+    tabs.forEach(function(t,j){ t.classList.toggle("on", i===j); });
+    var d=TABS[i];
+    document.getElementById("p-tag").textContent=d.tag;
+    document.getElementById("p-title").textContent=d.title;
+    document.getElementById("p-desc").textContent=d.desc;
+    document.getElementById("p-chips").innerHTML=d.chips.map(function(c){return "<span>"+c+"</span>";}).join("");
+    paintArt(i);
+  }
+  tabs.forEach(function(t,i){ t.addEventListener("click",function(){ setTab(i); }); });
+  setTab(0);
+
+  /* ---------- modal ---------- */
+  var modal=document.getElementById("modal");
+  function openModal(tier){
+    modal.classList.add("open");
+    document.body.style.overflow="hidden";
+    if(tier){ var sel=document.getElementById("f-tier"); for(var i=0;i<sel.options.length;i++){ if(sel.options[i].text.indexOf(tier.split(" £")[0])===0) sel.selectedIndex=i; } }
+    setTimeout(function(){ document.getElementById("f-name").focus(); },350);
+    tone(240,0.25,"sine",0.05,120);
+  }
+  function closeModal(){ modal.classList.remove("open"); document.body.style.overflow=""; }
+  document.querySelectorAll("[data-open]").forEach(function(b){
+    b.addEventListener("click",function(){ openModal(b.getAttribute("data-tier")); });
+  });
+  document.getElementById("mclose").addEventListener("click",closeModal);
+  modal.addEventListener("click",function(e){ if(e.target===modal) closeModal(); });
+  addEventListener("keydown",function(e){ if(e.key==="Escape") closeModal(); });
+
+  document.getElementById("reqform").addEventListener("submit",function(e){
+    e.preventDefault();
+    var f=e.target;
+    var subj="Preview request: "+f.gym.value+" ("+f.tier.value+")";
+    var body="Name: "+f.name.value+"\nGym: "+f.gym.value+"\nEmail: "+f.email.value+"\nPackage: "+f.tier.value+"\n\n"+f.msg.value;
+    window.location.href="mailto:samviroanimations@gmail.com?subject="+encodeURIComponent(subj)+"&body="+encodeURIComponent(body);
+    document.getElementById("formok").style.display="block";
+    tone(660,0.2,"triangle",0.06,990);
+  });
+
+  /* ---------- three.js scene ---------- */
+  var stage=document.getElementById("stage");
+  function fallback(){ stage.style.display="none"; document.getElementById("stagefb").style.display="grid"; }
+  if(!window.matchMedia("(min-width: 1px)").matches) return;
+  var s=document.createElement("script");
+  s.type="importmap";
+  s.textContent=JSON.stringify({imports:{"three":"https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"}});
+  document.head.appendChild(s);
+  var m=document.createElement("script");
+  m.type="module";
+  m.textContent=`
+import * as THREE from 'three';
+import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
+
+const stage = document.getElementById('stage');
+let renderer;
+try {
+  renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true, powerPreference: 'high-performance' });
+} catch (e) {
+  document.getElementById('stagefb').style.display = 'grid';
+  stage.style.display = 'none';
+  throw e;
+}
+renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
+renderer.setSize(stage.clientWidth, stage.clientHeight);
+renderer.toneMapping = THREE.ACESFilmicToneMapping;
+renderer.toneMappingExposure = 1.05;
+stage.appendChild(renderer.domElement);
+
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(38, stage.clientWidth / stage.clientHeight, 0.1, 100);
+camera.position.set(0, 0.15, 6.4);
+
+const pmrem = new THREE.PMREMGenerator(renderer);
+scene.environment = pmrem.fromScene(new RoomEnvironment(renderer), 0.04).texture;
+
+const ACCENT = new THREE.Color('#A31C18');
+const ACCENT2 = new THREE.Color('#D94A3A');
+const DEEP = new THREE.Color('#06110C');
+
+/* lighting: cinematic 3-point */
+const key = new THREE.DirectionalLight(0xffffff, 2.6);
+key.position.set(4, 6, 5);
+scene.add(key);
+const rim = new THREE.PointLight(ACCENT, 90, 24, 2);
+rim.position.set(-4.2, 1.6, -3.2);
+scene.add(rim);
+const rim2 = new THREE.PointLight(ACCENT2, 55, 22, 2);
+rim2.position.set(4.4, -2.4, -2.4);
+scene.add(rim2);
+const fill = new THREE.HemisphereLight(DEEP.getHex(), 0x050505, 0.55);
+scene.add(fill);
+
+/* materials */
+const chrome = new THREE.MeshPhysicalMaterial({ color: 0xf4f4f5, metalness: 1, roughness: 0.12, envMapIntensity: 1.5, clearcoat: 1, clearcoatRoughness: 0.08 });
+const steel  = new THREE.MeshPhysicalMaterial({ color: 0x3a3a3e, metalness: 0.95, roughness: 0.32, envMapIntensity: 1.1 });
+const accentM = new THREE.MeshPhysicalMaterial({ color: ACCENT, metalness: 0.85, roughness: 0.25, emissive: ACCENT, emissiveIntensity: 0.35, envMapIntensity: 1.2 });
+const rubber = new THREE.MeshStandardMaterial({ color: 0x141416, metalness: 0.2, roughness: 0.85 });
+
+const group = new THREE.Group();
+scene.add(group);
+
+
+/* heavy chrome dumbbell */
+const dLen = 1.5;
+const handle = new THREE.Mesh(new THREE.CylinderGeometry(0.085, 0.085, dLen, 40), chrome);
+handle.rotation.z = Math.PI / 2;
+group.add(handle);
+[-1, 1].forEach((side) => {
+  const collar = new THREE.Mesh(new THREE.CylinderGeometry(0.13, 0.13, 0.1, 32), accentM);
+  collar.rotation.z = Math.PI / 2;
+  collar.position.x = side * (dLen / 2 + 0.02);
+  group.add(collar);
+  const plate1 = new THREE.Mesh(new THREE.CylinderGeometry(0.42, 0.42, 0.13, 48), steel);
+  plate1.rotation.z = Math.PI / 2;
+  plate1.position.x = side * (dLen / 2 + 0.15);
+  group.add(plate1);
+  const ring1 = new THREE.Mesh(new THREE.TorusGeometry(0.34, 0.012, 12, 60), chrome);
+  ring1.position.x = side * (dLen / 2 + 0.215);
+  ring1.rotation.y = Math.PI / 2;
+  group.add(ring1);
+  const plate2 = new THREE.Mesh(new THREE.CylinderGeometry(0.3, 0.3, 0.1, 44), chrome);
+  plate2.rotation.z = Math.PI / 2;
+  plate2.position.x = side * (dLen / 2 + 0.27);
+  group.add(plate2);
+  const cap = new THREE.Mesh(new THREE.SphereGeometry(0.075, 24, 24), steel);
+  cap.position.x = side * (dLen / 2 + 0.34);
+  group.add(cap);
+  const grip = new THREE.Mesh(new THREE.CylinderGeometry(0.088, 0.088, 0.34, 32), rubber);
+  grip.rotation.z = Math.PI / 2;
+  grip.position.x = side * 0.42;
+  group.add(grip);
+});
+group.position.set(0.6, 0, 0);
+group.scale.setScalar(1.08);
+
+
+/* particle atmosphere */
+const pGeo = new THREE.BufferGeometry();
+const N = 900;
+const pos = new Float32Array(N * 3);
+for (let i = 0; i < N; i++) {
+  pos[i*3]   = (Math.random() - 0.5) * 18;
+  pos[i*3+1] = (Math.random() - 0.5) * 12;
+  pos[i*3+2] = (Math.random() - 0.5) * 9 - 1;
+}
+pGeo.setAttribute('position', new THREE.BufferAttribute(pos, 3));
+const pMat = new THREE.PointsMaterial({ color: ACCENT, size: 0.028, transparent: true, opacity: 0.5, depthWrite: false, blending: THREE.AdditiveBlending });
+const pts = new THREE.Points(pGeo, pMat);
+scene.add(pts);
+const pMat2 = new THREE.PointsMaterial({ color: 0xffffff, size: 0.016, transparent: true, opacity: 0.28, depthWrite: false, blending: THREE.AdditiveBlending });
+const pts2 = new THREE.Points(pGeo.clone(), pMat2);
+scene.add(pts2);
+
+/* pointer + drag */
+let px = 0, py = 0, tx = 0, ty = 0, vy = 0;
+let dragging = false, lastX = 0, spin = 0;
+const hero = document.getElementById('top');
+hero.addEventListener('pointermove', (e) => {
+  const r = hero.getBoundingClientRect();
+  tx = ((e.clientX - r.left) / r.width - 0.5) * 2;
+  ty = ((e.clientY - r.top) / r.height - 0.5) * 2;
+  if (dragging) { spin += (e.clientX - lastX) * 0.006; lastX = e.clientX; }
+});
+hero.addEventListener('pointerdown', (e) => { dragging = true; lastX = e.clientX; });
+addEventListener('pointerup', () => { dragging = false; });
+hero.addEventListener('touchmove', (e) => {
+  const r = hero.getBoundingClientRect();
+  tx = ((e.touches[0].clientX - r.left) / r.width - 0.5) * 2;
+  ty = ((e.touches[0].clientY - r.top) / r.height - 0.5) * 2;
+}, { passive: true });
+
+let visible = true;
+new IntersectionObserver((es) => { visible = es[0].isIntersecting; }).observe(hero);
+document.addEventListener('visibilitychange', () => { visible = !document.hidden; });
+
+const clock = new THREE.Clock();
+function tick() {
+  requestAnimationFrame(tick);
+  if (!visible) return;
+  const t = clock.getElapsedTime();
+  px += (tx - px) * 0.045;
+  py += (ty - py) * 0.045;
+  spin *= dragging ? 0.94 : 0.965;
+  group.rotation.y = t * 0.12 + px * 0.55 + spin;
+  group.rotation.x = py * 0.22 + Math.sin(t * 0.5) * 0.05;
+  group.position.y = Math.sin(t * 0.8) * 0.09;
+  pts.rotation.y = t * 0.02;
+  pts2.rotation.y = -t * 0.016;
+  pts.position.y = Math.sin(t * 0.18) * 0.4;
+  pts2.position.y = Math.cos(t * 0.14) * 0.5;
+  renderer.render(scene, camera);
+}
+tick();
+
+addEventListener('resize', () => {
+  const w = stage.clientWidth, h = stage.clientHeight;
+  camera.aspect = w / h;
+  camera.updateProjectionMatrix();
+  renderer.setSize(w, h);
+});
+`;
+  m.onerror=fallback;
+  document.body.appendChild(m);
+})();
+</script>
+</body>
+</html>
