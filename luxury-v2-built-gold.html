@@ -3,15 +3,15 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>SAMVIRO — Built Differently · Premium web design for UK gyms</title>
-<meta name="description" content="Dark-luxury gym websites with obsessive detail and AI automation. Free cinematic preview, one-off pricing from £500.">
+<title>SAMVIRO — Built for Yours · Live UK gym website previews</title>
+<meta name="description" content="Fifty live cinematic website concepts for real UK gyms across London, Leeds, Manchester, Birmingham and Bristol.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Playfair+Display:ital,wght@1,400;1,500;1,600&display=swap" rel="stylesheet">
 <style>
 :root{
   --bg:#121212; --deep:#0A1020; --accent:#C6A15B; --accent-rgb:198,161,91;
-  --ink:#F5F1E8; --muted:#9E988A; --line:rgba(255,255,255,.09);
+  --ink:#F4EFE4; --muted:#9A9384; --line:rgba(255,255,255,.09);
   --glass:linear-gradient(160deg,rgba(255,255,255,.065),rgba(255,255,255,.02));
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -49,7 +49,7 @@ nav.stuck{background:rgba(10,10,11,.72);backdrop-filter:blur(20px);-webkit-backd
 #sound:hover{border-color:var(--accent);box-shadow:0 0 20px rgba(var(--accent-rgb),.35)}
 .btn{display:inline-flex;align-items:center;gap:10px;padding:13px 26px;border-radius:100px;font-weight:700;font-size:.8rem;
   letter-spacing:.14em;text-transform:uppercase;border:none;cursor:pointer;transition:transform .3s,box-shadow .3s;will-change:transform}
-.btn.primary{background:linear-gradient(120deg,var(--accent),#E8C87E);color:#fff;box-shadow:0 12px 40px -8px rgba(var(--accent-rgb),.55)}
+.btn.primary{background:linear-gradient(120deg,var(--accent),#E8D5A8);color:#fff;box-shadow:0 12px 40px -8px rgba(var(--accent-rgb),.55)}
 .btn.primary:hover{transform:translateY(-2px);box-shadow:0 18px 54px -8px rgba(var(--accent-rgb),.7)}
 .btn.ghost{background:rgba(255,255,255,.05);border:1px solid var(--line);color:var(--ink);backdrop-filter:blur(10px)}
 .btn.ghost:hover{border-color:var(--accent);transform:translateY(-2px)}
@@ -77,7 +77,7 @@ nav.stuck{background:rgba(10,10,11,.72);backdrop-filter:blur(20px);-webkit-backd
 .hero h1 .row span{display:inline-block;transform:translateY(112%);animation:rise 1.1s cubic-bezier(.2,.75,.2,1) forwards}
 .hero h1 .row:nth-child(2) span{animation-delay:.12s}
 .hero h1 em{font-family:'Playfair Display',Georgia,serif;font-style:italic;font-weight:500;text-transform:none;letter-spacing:-.01em;
-  background:linear-gradient(100deg,var(--ink) 10%,var(--accent) 55%,#E8C87E 100%);
+  background:linear-gradient(100deg,var(--ink) 10%,var(--accent) 55%,#E8D5A8 100%);
   -webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 6px 44px rgba(var(--accent-rgb),.45))}
 .hero .sub{max-width:52ch;color:var(--muted);font-size:clamp(1rem,1.35vw,1.14rem);margin:34px 0 38px}
 .hero .sub b{color:var(--ink);font-weight:600}
@@ -148,7 +148,7 @@ h2 em{font-family:'Playfair Display',Georgia,serif;font-style:italic;font-weight
 .pack.hot{border-color:rgba(var(--accent-rgb),.6);box-shadow:0 30px 90px -30px rgba(var(--accent-rgb),.5);
   background:linear-gradient(165deg,rgba(var(--accent-rgb),.14),rgba(255,255,255,.02) 55%)}
 .pack.hot::before{content:"MOST CHOSEN";position:absolute;top:-11px;left:50%;transform:translateX(-50%);font-size:.56rem;
-  letter-spacing:.3em;padding:6px 14px;border-radius:100px;background:linear-gradient(120deg,var(--accent),#E8C87E);color:#fff;font-weight:700}
+  letter-spacing:.3em;padding:6px 14px;border-radius:100px;background:linear-gradient(120deg,var(--accent),#E8D5A8);color:#fff;font-weight:700}
 .pack .tier{font-size:.64rem;letter-spacing:.3em;text-transform:uppercase;color:var(--muted)}
 .pack .pname{font-size:1.35rem;font-weight:800;text-transform:uppercase;letter-spacing:.02em;margin:10px 0 4px}
 .pack .price{font-family:'Playfair Display',Georgia,serif;font-size:clamp(2.6rem,4vw,3.4rem);font-weight:500;line-height:1;margin:16px 0 4px}
@@ -230,6 +230,40 @@ footer a:hover{color:var(--ink)}
   *,*::before,*::after{animation-duration:.001s!important;transition-duration:.001s!important}
   .rv{opacity:1;transform:none}
 }
+
+/* ---- preview wall (client-facing platform) ---- */
+.disc-tabs{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:46px 0 20px}
+.dtab{text-align:left;padding:16px 18px;border-radius:16px;border:1px solid var(--line);background:rgba(255,255,255,.025);cursor:pointer;transition:border-color .3s,box-shadow .3s,background .3s;font-family:inherit}
+.dtab b{display:block;font-size:14px;font-weight:600;letter-spacing:.01em;color:var(--text)}
+.dtab span{display:block;margin-top:6px;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
+.dtab.on{border-color:var(--acc);background:rgba(255,255,255,.05);box-shadow:inset 0 0 0 1px var(--acc),0 14px 44px rgba(0,0,0,.35)}
+.dtab:hover{border-color:rgba(255,255,255,.28)}
+.wallctl{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;align-items:center;margin:8px 0 26px}
+.chips{display:flex;gap:8px;flex-wrap:wrap}
+.chip{padding:8px 15px;border-radius:999px;border:1px solid var(--line);background:transparent;color:var(--muted);font-size:11px;letter-spacing:.14em;text-transform:uppercase;cursor:pointer;transition:all .3s;font-family:inherit}
+.chip:hover{color:var(--text);border-color:rgba(255,255,255,.3)}
+.chip.on{color:var(--text);border-color:var(--acc);background:color-mix(in srgb,var(--acc) 16%, transparent);box-shadow:0 6px 24px rgba(0,0,0,.3)}
+.wallsearch input{background:rgba(255,255,255,.04);border:1px solid var(--line);border-radius:999px;padding:11px 20px;color:var(--text);min-width:250px;font-family:inherit;font-size:13px;outline:none;transition:border-color .3s,box-shadow .3s}
+.wallsearch input::placeholder{color:var(--muted)}
+.wallsearch input:focus{border-color:var(--acc);box-shadow:0 0 0 3px color-mix(in srgb,var(--acc) 20%, transparent)}
+.wall{display:grid;grid-template-columns:repeat(auto-fill,minmax(248px,1fr));gap:13px}
+.gcard{position:relative;border:1px solid var(--line);border-radius:16px;padding:19px 20px 17px;background:linear-gradient(160deg,rgba(255,255,255,.05),rgba(255,255,255,.014));transition:transform .35s ease,border-color .35s,box-shadow .35s;animation:gIn .5s both}
+@keyframes gIn{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.gcard:hover{transform:translateY(-4px);border-color:color-mix(in srgb,var(--acc) 60%, transparent);box-shadow:0 20px 44px rgba(0,0,0,.5)}
+.gmeta{display:flex;justify-content:space-between;gap:8px;font-size:9.5px;letter-spacing:.15em;text-transform:uppercase;color:var(--muted)}
+.gtag{color:var(--acc2);font-weight:600}
+.gcard h3{margin:10px 0 15px;font-size:20px;font-weight:600;letter-spacing:-.01em;line-height:1.15;color:var(--text)}
+.glink{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--text);display:inline-flex;gap:8px;align-items:center;text-decoration:none;opacity:.7;transition:opacity .3s,color .3s}
+.glink:hover{opacity:1;color:var(--acc2)}
+.glink i{font-style:normal;transition:transform .3s}
+.glink:hover i{transform:translateX(4px)}
+.gcard.hit{border-color:var(--acc);box-shadow:0 0 0 1px var(--acc),0 24px 60px color-mix(in srgb,var(--acc) 24%, transparent)}
+.gcard .yours{position:absolute;top:-9px;right:14px;font-size:8.5px;letter-spacing:.2em;text-transform:uppercase;padding:4px 10px;border-radius:999px;background:var(--acc);color:#fff;font-weight:700}
+.wallnote{margin-top:24px;color:var(--muted);font-size:13px;letter-spacing:.02em}
+.gempty{padding:40px;text-align:center;color:var(--muted);border:1px dashed var(--line);border-radius:16px;grid-column:1/-1}
+@media(max-width:980px){.disc-tabs{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.disc-tabs{grid-template-columns:1fr}.wallsearch input{min-width:100%;width:100%}}
+
 </style>
 </head>
 <body>
@@ -238,7 +272,7 @@ footer a:hover{color:var(--ink)}
 <nav id="nav">
   <a class="brand" href="#top"><i></i>SAMVIRO</a>
   <div class="navlinks">
-    <a href="#showcase">Showcase</a><a href="#packages">Packages</a><a href="#automation">AI Automation</a><a href="#process">Process</a>
+    <a href="#showcase">Previews</a><a href="#packages">Packages</a><a href="#automation">AI Automation</a><a href="#process">Process</a>
   </div>
   <div class="navright">
     <button id="sound" aria-label="Toggle sound" title="Sound on/off">&#128263;</button>
@@ -249,16 +283,16 @@ footer a:hover{color:var(--ink)}
 <header class="hero" id="top">
   <div id="stage"></div>
   <div class="stage-fallback" id="stagefb"></div>
-  <div class="hero-title-blur" aria-hidden="true">STANDARD</div>
+  <div class="hero-title-blur" aria-hidden="true">YOURS</div>
   <div class="hero-inner">
-    <p class="eyebrow">Dark-luxury web design × AI automation — UK gyms</p>
+    <p class="eyebrow">Fifty concepts — real UK gyms</p>
     <h1>
       <span class="row"><span>Built</span></span>
-      <span class="row"><span><em>Differently</em></span></span>
+      <span class="row"><span><em>for Yours</em></span></span>
     </h1>
-    <p class="sub"><b>Your gym isn't generic. Your website shouldn't be.</b> Obsessive dark-luxury design and automation that answers enquiries while you coach — one-off builds from £500.</p>
+    <p class="sub"><b>Your gym isn't generic. Your concept shouldn't be.</b> Each preview below was crafted in the gym's own city, with its own photos, pricing and story. Yours could be next — the preview is free.</p>
     <div class="cta-row">
-      <button class="btn primary" data-open>Request your preview</button>
+      <button class="btn primary" data-open>Claim your free preview</button>
       <a class="btn ghost" href="#packages">See packages</a>
     </div>
     <div class="hero-stats">
@@ -273,34 +307,31 @@ footer a:hover{color:var(--ink)}
 
 <div class="marquee" aria-hidden="true">
   <div class="mq-track">
-    <span>Cinematic design</span><b>&#9670;</b><span>AI automation</span><b>&#9670;</b><span>Built for gyms</span><b>&#9670;</b><span>Loaded in under a second</span><b>&#9670;</b><span>No subscriptions</span><b>&#9670;</b>
-    <span>Cinematic design</span><b>&#9670;</b><span>AI automation</span><b>&#9670;</b><span>Built for gyms</span><b>&#9670;</b><span>Loaded in under a second</span><b>&#9670;</b><span>No subscriptions</span><b>&#9670;</b>
+    <span>London</span><b>&#9670;</b><span>Manchester</span><b>&#9670;</b><span>Birmingham</span><b>&#9670;</b><span>Leeds</span><b>&#9670;</b><span>Bristol</span><b>&#9670;</b><span>50 live previews</span><b>&#9670;</b>
+    <span>London</span><b>&#9670;</b><span>Manchester</span><b>&#9670;</b><span>Birmingham</span><b>&#9670;</b><span>Leeds</span><b>&#9670;</b><span>Bristol</span><b>&#9670;</b><span>50 live previews</span><b>&#9670;</b>
   </div>
 </div>
 
 <section id="showcase">
   <div class="wrap">
-    <p class="k rv">The Showcase</p>
-    <h2 class="rv">Three disciplines.<br><em>One standard.</em></h2>
-    <p class="lead rv">Every gym gets its own stage. Pick a discipline to preview how your floor, your energy and your coaching translate into a cinematic digital experience.</p>
-    <div class="showcase">
-      <div class="tabcol rv">
-        <button class="tab on" data-tab="0"><h3><i>01</i> Boxing</h3><p>Ring heritage, carded squads and fight nights, framed like a title bout.</p></button>
-        <button class="tab" data-tab="1"><h3><i>02</i> Strength</h3><p>Iron, chalk and heavy sets. A layout that feels as solid as the plates.</p></button>
-        <button class="tab" data-tab="2"><h3><i>03</i> Conditioning</h3><p>Class timetables, trials and membership flows that convert on mobile.</p></button>
-      </div>
-      <div class="panel rv" id="panel">
-        <a class="plink" href="https://samviro.github.io/gym-refresh-previews/" target="_blank" rel="noopener">Open live previews &rarr;</a>
-        <div class="art" id="art"></div>
-        <div class="veil"></div>
-        <div class="pbody">
-          <span class="tag" id="p-tag">Discipline 01</span>
-          <h4 id="p-title">The ring is the brand</h4>
-          <p id="p-desc">Full-bleed fight-night imagery, squad rosters and a booking flow that fills your beginners' sessions without a single phone call.</p>
-          <div class="chips" id="p-chips"></div>
-        </div>
-      </div>
+    <p class="k rv">The preview wall</p>
+    <h2 class="rv">Fifty live concepts.<br><em>Real UK gyms.</em></h2>
+    <p class="lead rv">Not a template shop - a preview platform. Every concept below was designed for a specific club, in its own city, with its own photos, pricing and history. Find your name, open it, share it with your coaches. The preview is free, and it stays yours.</p>
+
+    <div class="disc-tabs" id="discTabs" role="tablist" aria-label="Gym disciplines">
+      <button class="dtab on" data-d="all" role="tab"><b>All gyms</b><span id="c-all">50 previews</span></button>
+      <button class="dtab" data-d="boxing" role="tab"><b>Boxing &amp; Combat</b><span id="c-boxing">previews</span></button>
+      <button class="dtab" data-d="strength" role="tab"><b>Strength &amp; Bodybuilding</b><span id="c-strength">previews</span></button>
+      <button class="dtab" data-d="functional" role="tab"><b>CrossFit &amp; Functional</b><span id="c-functional">previews</span></button>
     </div>
+
+    <div class="wallctl">
+      <div class="chips" id="regChips" aria-label="Region filter"></div>
+      <div class="wallsearch"><input id="gsearch" type="search" placeholder="Find your gym by name&hellip;" aria-label="Find your gym by name"></div>
+    </div>
+
+    <div class="wall" id="wall" aria-live="polite"></div>
+    <p class="wallnote" id="wallnote">Every card opens a live preview built for that gym.</p>
   </div>
 </section>
 
@@ -388,7 +419,7 @@ footer a:hover{color:var(--ink)}
     <h2 class="rv">Your gym is already <em>exceptional.</em></h2>
     <p class="lead rv" style="margin-inline:auto">Make the website prove it. Free preview, one-off price, live in a week.</p>
     <div class="cta-row rv">
-      <button class="btn primary" data-open>Request your preview</button>
+      <button class="btn primary" data-open>Claim your free preview</button>
       <a class="btn ghost" href="mailto:samviroanimations@gmail.com">Email Samviro</a>
     </div>
   </div>
@@ -400,10 +431,10 @@ footer a:hover{color:var(--ink)}
   <span><a href="https://samviro.github.io/gym-refresh-previews/" target="_blank" rel="noopener">Live previews</a> &middot; <a href="mailto:samviroanimations@gmail.com">samviroanimations@gmail.com</a></span>
 </footer>
 
-<div id="modal" role="dialog" aria-modal="true" aria-label="Request a preview">
+<div id="modal" role="dialog" aria-modal="true" aria-label="Claim your preview">
   <div class="modal-card">
     <button class="x" id="mclose" aria-label="Close">&#10005;</button>
-    <h3>Request your <em>preview</em></h3>
+    <h3>Claim your <em>preview</em></h3>
     <p class="ms">Tell me about your gym. I'll reply within 24 hours with your free cinematic concept.</p>
     <form id="reqform">
       <div class="field"><label for="f-name">Your name</label><input id="f-name" name="name" required placeholder="Alex Carter"></div>
@@ -477,47 +508,116 @@ footer a:hover{color:var(--ink)}
   },{threshold:0.12});
   document.querySelectorAll(".rv").forEach(function(el){ io.observe(el); });
 
-  /* ---------- showcase tabs ---------- */
-  var TABS=[
-    {tag:"Discipline 01",title:"The ring is the brand",desc:"Full-bleed fight-night imagery, squad rosters and a booking flow that fills your beginners sessions without a single phone call.",
-     chips:["Fight-night hero","Squad profiles","Trial booking"]},
-    {tag:"Discipline 02",title:"Built from iron",desc:"Heavy, grounded layouts that feel like walking into the free-weights hall. Membership tiers and day passes priced right on the page.",
-     chips:["Membership calculator","Day passes","Gallery lightbox"]},
-    {tag:"Discipline 03",title:"Energy that converts",desc:"Class timetables, smooth-scrolling schedules and a mobile experience fast enough to book from the changing room.",
-     chips:["Live timetable","Sub-second load","Mobile-first"]}
-  ];
-  var artWrap=document.getElementById("art");
-  function paintArt(i){
-    var hues=["#C6A15B","#8A6A33","#E8C87E"];
-    artWrap.innerHTML='<svg viewBox="0 0 800 560" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">'
-      +'<defs><radialGradient id="g'+i+'" cx="'+[68,30,50][i]+'%" cy="'+[30,60,42][i]+'%" r="80%">'
-      +'<stop offset="0%" stop-color="'+hues[i]+'" stop-opacity=".55"/><stop offset="55%" stop-color="#121212" stop-opacity=".2"/><stop offset="100%" stop-color="#121212"/></radialGradient>'
-      +'<linearGradient id="l'+i+'" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="rgba(255,255,255,.10)"/><stop offset="100%" stop-color="rgba(255,255,255,0)"/></linearGradient></defs>'
-      +'<rect width="800" height="560" fill="url(#g'+i+')"/>'
-      +'<g opacity=".5" stroke="rgba(255,255,255,.14)" fill="none">'
-      +'<circle cx="'+[520,240,400][i]+'" cy="'+[210,190,240][i]+'" r="150"/><circle cx="'+[520,240,400][i]+'" cy="'+[210,190,240][i]+'" r="90"/>'
-      +'<path d="M0 '+[420,470,430][i]+' Q 400 '+[300,330,320][i]+' 800 '+[380,450,400][i]+'" stroke-width="1.2"/></g>'
-      +'<g opacity=".85">'
-      +'<rect x="60" y="70" width="150" height="8" rx="4" fill="rgba(255,255,255,.25)"/>'
-      +'<rect x="60" y="92" width="90" height="8" rx="4" fill="rgba(255,255,255,.12)"/>'
-      +'<rect x="60" y="'+[380,410,392][i]+'" width="230" height="10" rx="5" fill="'+hues[i]+'" opacity=".8"/>'
-      +'</g>'
-      +'<circle cx="'+[660,180,610][i]+'" cy="'+[120,120,140][i]+'" r="5" fill="'+hues[i]+'"/>'
-      +'<circle cx="'+[700,140,660][i]+'" cy="'+[170,90,190][i]+'" r="3" fill="rgba(255,255,255,.5)"/>'
-      +'</svg>';
+  /* ---------- preview wall ---------- */
+  var BASE = "https://samviro.github.io/gym-refresh-previews/";
+  var GYMS = [{"n": "Peacock Gym", "c": "Canning Town, London", "r": "London", "d": "boxing", "s": "peacock-gym"}, {"n": "Fitness Express 25", "c": "Earls Court, London", "r": "London", "d": "functional", "s": "fitness-express-25"}, {"n": "Gator ABC", "c": "Hainault, London", "r": "London", "d": "boxing", "s": "gator-abc"}, {"n": "Bodyline Fitness", "c": "Ealing, London", "r": "London", "d": "functional", "s": "bodyline-studios"}, {"n": "All Stars Boxing", "c": "Paddington, London", "r": "London", "d": "boxing", "s": "all-stars-boxing"}, {"n": "St Pancras BC", "c": "Kentish Town, London", "r": "London", "d": "boxing", "s": "st-pancras-boxing"}, {"n": "Oryan Fitness", "c": "Islington, London", "r": "London", "d": "strength", "s": "oryan-fitness"}, {"n": "Breathe Fitness", "c": "Sutton, London", "r": "London", "d": "functional", "s": "breathe-fitness"}, {"n": "Explore Pilates", "c": "Wimbledon, London", "r": "London", "d": "functional", "s": "explore-pilates"}, {"n": "Pilates Central", "c": "Islington, London", "r": "London", "d": "functional", "s": "pilates-central"}, {"n": "Repton Boxing Club", "c": "Bethnal Green, London", "r": "London", "d": "boxing", "s": "repton-boxing-club"}, {"n": "The Ring Boxing Club", "c": "Bankside, London", "r": "London", "d": "boxing", "s": "the-ring-boxing-club"}, {"n": "Physical Culture", "c": "Putney, London", "r": "London", "d": "strength", "s": "physical-culture"}, {"n": "Toshi Karate Club", "c": "Edgware, London", "r": "London", "d": "boxing", "s": "toshi-karate-club"}, {"n": "County ABC", "c": "Leyton, London", "r": "London", "d": "boxing", "s": "county-abc"}, {"n": "Miguel's Boxing Gym", "c": "Herne Hill, London", "r": "London", "d": "boxing", "s": "miguels-boxing-gym"}, {"n": "Left Hook Boxing", "c": "Shadwell, London", "r": "London", "d": "boxing", "s": "lefthook-boxing"}, {"n": "KB Fitness", "c": "Central London", "r": "London", "d": "boxing", "s": "kb-fitness"}, {"n": "The Square Boxing", "c": "Chelsea, London", "r": "London", "d": "boxing", "s": "the-square-boxing"}, {"n": "Olympic Sports Gym", "c": "Ashton-under-Lyne", "r": "Manchester", "d": "strength", "s": "olympic-sports-gym"}, {"n": "Sale West ABC", "c": "Sale, Trafford", "r": "Manchester", "d": "boxing", "s": "sale-west-abc"}, {"n": "Samson Boxing Gym", "c": "Ashton-under-Lyne", "r": "Manchester", "d": "boxing", "s": "samson-boxing"}, {"n": "Taekwondo Machine", "c": "Harpurhey, Manchester", "r": "Manchester", "d": "boxing", "s": "taekwondo-machine"}, {"n": "The PT Factory", "c": "Denton, Manchester", "r": "Manchester", "d": "functional", "s": "pt-factory"}, {"n": "Team Fearless MMA", "c": "Manchester", "r": "Manchester", "d": "boxing", "s": "team-fearless-mma"}, {"n": "Fats Gym", "c": "Manchester M3", "r": "Manchester", "d": "boxing", "s": "fats-gym"}, {"n": "Jimmy Egan's Boxing", "c": "Wythenshawe, Manchester", "r": "Manchester", "d": "boxing", "s": "jimmy-egans-boxing"}, {"n": "Moss Side Fire Station ABC", "c": "Moss Side, Manchester", "r": "Manchester", "d": "boxing", "s": "moss-side-fire-station"}, {"n": "Timperley ABC", "c": "Timperley, Altrincham", "r": "Manchester", "d": "boxing", "s": "timperley-abc"}, {"n": "GMBD Hub", "c": "Oldham", "r": "Manchester", "d": "boxing", "s": "greater-manchester-boxing-hub"}, {"n": "Eagle Kickboxing", "c": "Birmingham", "r": "Birmingham", "d": "boxing", "s": "eagle-kickboxing"}, {"n": "USKA Fight Factory", "c": "Tyseley, Birmingham", "r": "Birmingham", "d": "boxing", "s": "uska-kickboxing"}, {"n": "Aero-Kick Gym", "c": "Birmingham", "r": "Birmingham", "d": "boxing", "s": "aero-kick"}, {"n": "Pat Benson Boxing", "c": "Kings Heath, Birmingham", "r": "Birmingham", "d": "boxing", "s": "pat-benson-boxing"}, {"n": "Intensity MMA", "c": "Willenhall", "r": "Birmingham", "d": "boxing", "s": "intensity-mma"}, {"n": "Solihull Community Boxing", "c": "Solihull", "r": "Birmingham", "d": "boxing", "s": "solihull-community-boxing"}, {"n": "18Y Ultimate Fitness", "c": "Balsall Heath, Birmingham", "r": "Birmingham", "d": "strength", "s": "18y-ultimate-fitness"}, {"n": "Birmingham Martial Arts Centre", "c": "Hall Green, Birmingham", "r": "Birmingham", "d": "boxing", "s": "birmingham-martial-arts"}, {"n": "Strike Martial Arts", "c": "Solihull", "r": "Birmingham", "d": "boxing", "s": "strike-martial-arts"}, {"n": "ITS Ladies Fitness", "c": "Kingswood, Bristol", "r": "Bristol", "d": "functional", "s": "its-ladies-fitness"}, {"n": "EightyOne Gym", "c": "Bristol", "r": "Bristol", "d": "strength", "s": "eightyone-gym"}, {"n": "Kick Start Health & Fitness", "c": "Hanham, Bristol", "r": "Bristol", "d": "functional", "s": "kickstart-health"}, {"n": "Bristol School of Karate", "c": "Bristol", "r": "Bristol", "d": "boxing", "s": "bristol-school-of-karate"}, {"n": "Personal Combat Training", "c": "Bristol", "r": "Bristol", "d": "boxing", "s": "personal-combat-training"}, {"n": "Alliance Boxing", "c": "Harehills, Leeds", "r": "Leeds & Yorkshire", "d": "boxing", "s": "alliance-boxing"}, {"n": "House of Gainz", "c": "Leeds", "r": "Leeds & Yorkshire", "d": "strength", "s": "house-of-gainz"}, {"n": "Bad Company Muay Thai", "c": "Leeds", "r": "Leeds & Yorkshire", "d": "boxing", "s": "bad-company-muaythai"}, {"n": "Kiatphontip", "c": "Leeds", "r": "Leeds & Yorkshire", "d": "boxing", "s": "kiatphontip"}, {"n": "Renowned Martial Arts", "c": "Barnsley", "r": "Leeds & Yorkshire", "d": "boxing", "s": "renowned-martial-arts"}, {"n": "Selby ABC", "c": "Selby", "r": "Leeds & Yorkshire", "d": "boxing", "s": "selby-abc"}];
+  var TL = {boxing:"Boxing & Combat", strength:"Strength", functional:"Functional"};
+  var REGIONS = ["All regions","London","Manchester","Birmingham","Leeds & Yorkshire","Bristol"];
+  var st = {d:"all", r:"All regions", q:""};
+  var wall = document.getElementById("wall");
+  var note = document.getElementById("wallnote");
+
+  function countFor(d){ return GYMS.filter(function(g){ return d==="all" || g.d===d; }).length; }
+  ["all","boxing","strength","functional"].forEach(function(d){
+    var el = document.getElementById("c-"+d);
+    if(el) el.textContent = countFor(d) + " preview" + (countFor(d)===1?"":"s");
+  });
+
+  var chipsBox = document.getElementById("regChips");
+  REGIONS.forEach(function(r){
+    var b = document.createElement("button");
+    b.className = "chip" + (r===st.r?" on":"");
+    b.type = "button"; b.textContent = r; b.setAttribute("data-r", r);
+    b.addEventListener("click", function(){
+      st.r = r;
+      Array.prototype.forEach.call(chipsBox.children, function(c){ c.classList.toggle("on", c.getAttribute("data-r")===r); });
+      render(); sfx(1500);
+    });
+    chipsBox.appendChild(b);
+  });
+
+  Array.prototype.forEach.call(document.querySelectorAll("#discTabs .dtab"), function(tab){
+    tab.addEventListener("click", function(){
+      st.d = tab.getAttribute("data-d");
+      Array.prototype.forEach.call(document.querySelectorAll("#discTabs .dtab"), function(t){ t.classList.toggle("on", t===tab); });
+      render(); sfx(1500);
+    });
+  });
+
+  var search = document.getElementById("gsearch");
+  if(search){
+    search.addEventListener("input", function(){ st.q = this.value.trim().toLowerCase(); render(); });
   }
-  var tabs=document.querySelectorAll(".tab");
-  function setTab(i){
-    tabs.forEach(function(t,j){ t.classList.toggle("on", i===j); });
-    var d=TABS[i];
-    document.getElementById("p-tag").textContent=d.tag;
-    document.getElementById("p-title").textContent=d.title;
-    document.getElementById("p-desc").textContent=d.desc;
-    document.getElementById("p-chips").innerHTML=d.chips.map(function(c){return "<span>"+c+"</span>";}).join("");
-    paintArt(i);
+
+  function match(g){
+    if(st.d!=="all" && g.d!==st.d) return false;
+    if(st.r!=="All regions" && g.r!==st.r) return false;
+    if(st.q && g.n.toLowerCase().indexOf(st.q)===-1 && g.c.toLowerCase().indexOf(st.q)===-1) return false;
+    return true;
   }
-  tabs.forEach(function(t,i){ t.addEventListener("click",function(){ setTab(i); }); });
-  setTab(0);
+
+  function render(hitSlug){
+    var list = GYMS.filter(match);
+    wall.innerHTML = "";
+    if(!list.length){
+      wall.innerHTML = '<div class="gempty">No preview under that name yet - request it and I\'ll build yours free.</div>';
+      note.textContent = "0 concepts match - yours could be the first.";
+      return;
+    }
+    list.forEach(function(g, i){
+      var card = document.createElement("article");
+      card.className = "gcard" + (hitSlug===g.s ? " hit" : "");
+      card.style.animationDelay = Math.min(i*22, 400) + "ms";
+      card.setAttribute("data-slug", g.s);
+      card.innerHTML = '<div class="gmeta"><span class="gtag">'+TL[g.d]+'</span><span class="gcity">'+g.c+'</span></div>'
+        + '<h3>'+g.n+'</h3>'
+        + '<a class="glink" href="'+BASE+g.s+'.html" target="_blank" rel="noopener">Open live preview <i>&#8594;</i></a>'
+        + (hitSlug===g.s ? '<span class="yours">This one\'s yours</span>' : '');
+      wall.appendChild(card);
+    });
+    note.textContent = "Showing " + list.length + " of " + GYMS.length + " live concepts - every card opens a real preview built for that gym.";
+  }
+
+  function highlight(slug, scroll){
+    var card = wall.querySelector('[data-slug="'+slug+'"]');
+    if(!card && slug){ st.d="all"; st.r="All regions"; st.q=""; render(); card = wall.querySelector('[data-slug="'+slug+'"]'); }
+    if(card){
+      card.classList.add("hit");
+      if(!card.querySelector(".yours")){
+        var b = document.createElement("span"); b.className="yours"; b.textContent="This one's yours"; card.appendChild(b);
+      }
+      if(scroll) card.scrollIntoView({behavior:"smooth", block:"center"});
+    }
+  }
+
+  render();
+
+  /* personal link support: ?gym=slug or #gym=slug */
+  var params = new URLSearchParams(location.search);
+  var pre = params.get("gym") || (location.hash.indexOf("gym=")>-1 ? location.hash.split("gym=")[1] : "");
+  if(pre){
+    var found = GYMS.filter(function(g){ return g.s===pre; })[0];
+    if(!found){
+      var q = pre.toLowerCase();
+      found = GYMS.filter(function(g){ return g.n.toLowerCase().indexOf(q)>-1; })[0];
+    }
+    if(found){
+      st.d = "all"; st.r = "All regions"; st.q = "";
+      Array.prototype.forEach.call(document.querySelectorAll("#discTabs .dtab"), function(t){ t.classList.toggle("on", t.getAttribute("data-d")==="all"); });
+      Array.prototype.forEach.call(chipsBox.children, function(c){ c.classList.toggle("on", c.getAttribute("data-r")==="All regions"); });
+      render(found.s);
+      setTimeout(function(){ highlight(found.s, true); }, 350);
+    }
+  }
+  /* exact-name search auto-highlight */
+  if(search){
+    search.addEventListener("keydown", function(e){
+      if(e.key!=="Enter") return;
+      var q = this.value.trim().toLowerCase();
+      var exact = GYMS.filter(function(g){ return g.n.toLowerCase()===q; })[0];
+      if(exact) highlight(exact.s, false);
+    });
+  }
 
   /* ---------- modal ---------- */
   var modal=document.getElementById("modal");
@@ -582,7 +682,7 @@ const pmrem = new THREE.PMREMGenerator(renderer);
 scene.environment = pmrem.fromScene(new RoomEnvironment(renderer), 0.04).texture;
 
 const ACCENT = new THREE.Color('#C6A15B');
-const ACCENT2 = new THREE.Color('#E8C87E');
+const ACCENT2 = new THREE.Color('#E8D5A8');
 const DEEP = new THREE.Color('#0A1020');
 
 /* lighting: cinematic 3-point */
