@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>SAMVIRO — Built for Yours · Live UK gym website previews</title>
-<meta name="description" content="Fifty live cinematic website concepts for real UK gyms across London, Leeds, Manchester, Birmingham and Bristol.">
+<meta name="description" content="Sixty live cinematic website concepts for real UK gyms across London, Leeds, Manchester, Birmingham and Bristol.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Playfair+Display:ital,wght@1,400;1,500;1,600&display=swap" rel="stylesheet">
@@ -265,6 +265,24 @@ footer a:hover{color:var(--ink)}
 @media(max-width:560px){.disc-tabs{grid-template-columns:1fr}.wallsearch input{min-width:100%;width:100%}}
 
 
+/* ---- chrome intro (portfolio) ---- */
+#chromeIntro{position:fixed;inset:0;z-index:9999;background:radial-gradient(60% 50% at 50% 45%,#141414,#080808 72%),#080808;display:grid;place-items:center;transition:opacity .9s ease,visibility .9s}
+#chromeIntro.gone{opacity:0;visibility:hidden;pointer-events:none}
+.ciIn{text-align:center;padding:0 20px}
+.ciDot{width:74px;height:74px;margin:0 auto 26px;border:1px solid rgba(255,255,255,.22);border-radius:50%;display:grid;place-items:center}
+.ciDot svg{width:34px;height:34px;filter:drop-shadow(0 0 14px rgba(196,48,43,.45))}
+.ciEst{font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:#8d8880;margin:0 0 18px}
+.ciChrome{font-family:"Playfair Display",Georgia,serif;font-weight:500;font-size:clamp(38px,9vw,92px);letter-spacing:.06em;margin:0;background:linear-gradient(180deg,#fff 0%,#d7dce1 30%,#787f86 48%,#f2f5f8 62%,#9aa2a9 76%,#fff 100%);-webkit-background-clip:text;background-clip:text;color:transparent;background-size:100% 220%;animation:ciSheen 6s ease-in-out infinite}
+@keyframes ciSheen{0%,100%{background-position:0 0}50%{background-position:0 100%}}
+.ciLine{width:min(240px,50vw);height:1px;background:rgba(255,255,255,.14);margin:26px auto;overflow:hidden}
+.ciLine b{display:block;height:1px;width:0;background:var(--acc);animation:ciLoad 2.2s ease forwards}
+@keyframes ciLoad{to{width:100%}}
+.ciEnter{background:none;border:0;color:#cfcac2;font:inherit;font-size:11px;letter-spacing:.3em;text-transform:uppercase;cursor:pointer;padding:12px}
+.ciEnter:hover{color:#fff}
+/* editorial touches */
+.gcard{border-radius:4px}
+.gcard.f{box-shadow:0 0 0 1px rgba(255,255,255,.06),0 18px 60px rgba(0,0,0,.45)}
+
 /* ---- featured view + expand toggle ---- */
 .walllabel{margin:0 0 16px;display:flex;align-items:center;gap:12px;font-size:11px;
   letter-spacing:.22em;text-transform:uppercase;color:var(--muted)}
@@ -285,8 +303,17 @@ footer a:hover{color:var(--ink)}
 .gcard.f{border-color:color-mix(in srgb,var(--acc) 22%, var(--line))}
 @media(max-width:560px){.more{width:100%;justify-content:center;padding:15px 20px}}
 </style>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet">
 </head>
 <body>
+<div id="chromeIntro"><div class="ciIn">
+  <div class="ciDot"><svg viewBox="0 0 24 24" fill="none" stroke="#e9e6e0" stroke-width="1.3" stroke-linecap="round"><path d="M3 9v6M21 9v6M6 7v10M18 7v10M6 12h12"/></svg></div>
+  <p class="ciEst">A working concept &mdash; built for your gym</p>
+  <h1 class="ciChrome">SAMVIRO</h1>
+  <div class="ciLine"><b></b></div>
+  <button class="ciEnter" id="ciEnter" type="button">Enter the floor</button>
+</div></div>
+
 <div id="glow"></div><div id="dot"></div>
 
 <nav id="nav">
@@ -305,7 +332,7 @@ footer a:hover{color:var(--ink)}
   <div class="stage-fallback" id="stagefb"></div>
   <div class="hero-title-blur" aria-hidden="true">YOURS</div>
   <div class="hero-inner">
-    <p class="eyebrow">Fifty concepts — real UK gyms</p>
+    <p class="eyebrow">Sixty concepts — real UK gyms</p>
     <h1>
       <span class="row"><span>Built</span></span>
       <span class="row"><span><em>for Yours</em></span></span>
@@ -335,7 +362,7 @@ footer a:hover{color:var(--ink)}
 <section id="showcase">
   <div class="wrap">
     <p class="k rv">The preview wall</p>
-    <h2 class="rv">Fifty live concepts.<br><em>Real UK gyms.</em></h2>
+    <h2 class="rv">Sixty live concepts.<br><em>Real UK gyms.</em></h2>
     <p class="lead rv">Not a template shop - a preview platform. Every concept below was designed for a specific club, in its own city, with its own photos, pricing and history. Find your name, open it, share it with your coaches. The preview is free, and it stays yours.</p>
 
     <div class="disc-tabs" id="discTabs" role="tablist" aria-label="Gym disciplines">
@@ -532,9 +559,9 @@ footer a:hover{color:var(--ink)}
 
   /* ---------- preview wall ---------- */
   var BASE = "https://samviro.github.io/gym-refresh-previews/";
-  var GYMS = [{"n": "Peacock Gym", "c": "Canning Town, London", "r": "London", "d": "boxing", "s": "peacock-gym"}, {"n": "Fitness Express 25", "c": "Earls Court, London", "r": "London", "d": "functional", "s": "fitness-express-25"}, {"n": "Gator ABC", "c": "Hainault, London", "r": "London", "d": "boxing", "s": "gator-abc"}, {"n": "Bodyline Fitness", "c": "Ealing, London", "r": "London", "d": "functional", "s": "bodyline-studios"}, {"n": "All Stars Boxing", "c": "Paddington, London", "r": "London", "d": "boxing", "s": "all-stars-boxing"}, {"n": "St Pancras BC", "c": "Kentish Town, London", "r": "London", "d": "boxing", "s": "st-pancras-boxing"}, {"n": "Oryan Fitness", "c": "Islington, London", "r": "London", "d": "strength", "s": "oryan-fitness"}, {"n": "Breathe Fitness", "c": "Sutton, London", "r": "London", "d": "functional", "s": "breathe-fitness"}, {"n": "Explore Pilates", "c": "Wimbledon, London", "r": "London", "d": "functional", "s": "explore-pilates"}, {"n": "Pilates Central", "c": "Islington, London", "r": "London", "d": "functional", "s": "pilates-central"}, {"n": "Repton Boxing Club", "c": "Bethnal Green, London", "r": "London", "d": "boxing", "s": "repton-boxing-club"}, {"n": "The Ring Boxing Club", "c": "Bankside, London", "r": "London", "d": "boxing", "s": "the-ring-boxing-club"}, {"n": "Physical Culture", "c": "Putney, London", "r": "London", "d": "strength", "s": "physical-culture"}, {"n": "Toshi Karate Club", "c": "Edgware, London", "r": "London", "d": "boxing", "s": "toshi-karate-club"}, {"n": "County ABC", "c": "Leyton, London", "r": "London", "d": "boxing", "s": "county-abc"}, {"n": "Miguel's Boxing Gym", "c": "Herne Hill, London", "r": "London", "d": "boxing", "s": "miguels-boxing-gym"}, {"n": "Left Hook Boxing", "c": "Shadwell, London", "r": "London", "d": "boxing", "s": "lefthook-boxing"}, {"n": "KB Fitness", "c": "Central London", "r": "London", "d": "boxing", "s": "kb-fitness"}, {"n": "The Square Boxing", "c": "Chelsea, London", "r": "London", "d": "boxing", "s": "the-square-boxing"}, {"n": "Olympic Sports Gym", "c": "Ashton-under-Lyne", "r": "Manchester", "d": "strength", "s": "olympic-sports-gym"}, {"n": "Sale West ABC", "c": "Sale, Trafford", "r": "Manchester", "d": "boxing", "s": "sale-west-abc"}, {"n": "Samson Boxing Gym", "c": "Ashton-under-Lyne", "r": "Manchester", "d": "boxing", "s": "samson-boxing"}, {"n": "Taekwondo Machine", "c": "Harpurhey, Manchester", "r": "Manchester", "d": "boxing", "s": "taekwondo-machine"}, {"n": "The PT Factory", "c": "Denton, Manchester", "r": "Manchester", "d": "functional", "s": "pt-factory"}, {"n": "Team Fearless MMA", "c": "Manchester", "r": "Manchester", "d": "boxing", "s": "team-fearless-mma"}, {"n": "Fats Gym", "c": "Manchester M3", "r": "Manchester", "d": "boxing", "s": "fats-gym", "f": 1}, {"n": "Jimmy Egan's Boxing", "c": "Wythenshawe, Manchester", "r": "Manchester", "d": "boxing", "s": "jimmy-egans-boxing", "f": 1}, {"n": "Moss Side Fire Station ABC", "c": "Moss Side, Manchester", "r": "Manchester", "d": "boxing", "s": "moss-side-fire-station", "f": 1}, {"n": "Timperley ABC", "c": "Timperley, Altrincham", "r": "Manchester", "d": "boxing", "s": "timperley-abc", "f": 1}, {"n": "GMBD Hub", "c": "Oldham", "r": "Manchester", "d": "boxing", "s": "greater-manchester-boxing-hub", "f": 1}, {"n": "Eagle Kickboxing", "c": "Birmingham", "r": "Birmingham", "d": "boxing", "s": "eagle-kickboxing"}, {"n": "USKA Fight Factory", "c": "Tyseley, Birmingham", "r": "Birmingham", "d": "boxing", "s": "uska-kickboxing"}, {"n": "Aero-Kick Gym", "c": "Birmingham", "r": "Birmingham", "d": "boxing", "s": "aero-kick"}, {"n": "Pat Benson Boxing", "c": "Kings Heath, Birmingham", "r": "Birmingham", "d": "boxing", "s": "pat-benson-boxing"}, {"n": "Intensity MMA", "c": "Willenhall", "r": "Birmingham", "d": "boxing", "s": "intensity-mma", "f": 1}, {"n": "Solihull Community Boxing", "c": "Solihull", "r": "Birmingham", "d": "boxing", "s": "solihull-community-boxing"}, {"n": "18Y Ultimate Fitness", "c": "Balsall Heath, Birmingham", "r": "Birmingham", "d": "strength", "s": "18y-ultimate-fitness", "f": 1}, {"n": "Birmingham Martial Arts Centre", "c": "Hall Green, Birmingham", "r": "Birmingham", "d": "boxing", "s": "birmingham-martial-arts", "f": 1}, {"n": "Strike Martial Arts", "c": "Solihull", "r": "Birmingham", "d": "boxing", "s": "strike-martial-arts"}, {"n": "ITS Ladies Fitness", "c": "Kingswood, Bristol", "r": "Bristol", "d": "functional", "s": "its-ladies-fitness"}, {"n": "EightyOne Gym", "c": "Bristol", "r": "Bristol", "d": "strength", "s": "eightyone-gym"}, {"n": "Kick Start Health & Fitness", "c": "Hanham, Bristol", "r": "Bristol", "d": "functional", "s": "kickstart-health"}, {"n": "Bristol School of Karate", "c": "Bristol", "r": "Bristol", "d": "boxing", "s": "bristol-school-of-karate"}, {"n": "Personal Combat Training", "c": "Bristol", "r": "Bristol", "d": "boxing", "s": "personal-combat-training"}, {"n": "Alliance Boxing", "c": "Harehills, Leeds", "r": "Leeds & Yorkshire", "d": "boxing", "s": "alliance-boxing"}, {"n": "House of Gainz", "c": "Leeds", "r": "Leeds & Yorkshire", "d": "strength", "s": "house-of-gainz"}, {"n": "Bad Company Muay Thai", "c": "Leeds", "r": "Leeds & Yorkshire", "d": "boxing", "s": "bad-company-muaythai"}, {"n": "Kiatphontip", "c": "Leeds", "r": "Leeds & Yorkshire", "d": "boxing", "s": "kiatphontip"}, {"n": "Renowned Martial Arts", "c": "Barnsley", "r": "Leeds & Yorkshire", "d": "boxing", "s": "renowned-martial-arts"}, {"n": "Selby ABC", "c": "Selby", "r": "Leeds & Yorkshire", "d": "boxing", "s": "selby-abc"}];
+  var GYMS = [{"n": "Peacock Gym", "c": "Canning Town, London", "r": "London", "d": "boxing", "s": "peacock-gym"}, {"n": "Fitness Express 25", "c": "Earls Court, London", "r": "London", "d": "functional", "s": "fitness-express-25"}, {"n": "Gator ABC", "c": "Hainault, London", "r": "London", "d": "boxing", "s": "gator-abc"}, {"n": "Bodyline Fitness", "c": "Ealing, London", "r": "London", "d": "functional", "s": "bodyline-studios"}, {"n": "All Stars Boxing", "c": "Paddington, London", "r": "London", "d": "boxing", "s": "all-stars-boxing"}, {"n": "St Pancras BC", "c": "Kentish Town, London", "r": "London", "d": "boxing", "s": "st-pancras-boxing"}, {"n": "Oryan Fitness", "c": "Islington, London", "r": "London", "d": "strength", "s": "oryan-fitness"}, {"n": "Breathe Fitness", "c": "Sutton, London", "r": "London", "d": "functional", "s": "breathe-fitness"}, {"n": "Explore Pilates", "c": "Wimbledon, London", "r": "London", "d": "functional", "s": "explore-pilates"}, {"n": "Pilates Central", "c": "Islington, London", "r": "London", "d": "functional", "s": "pilates-central"}, {"n": "Repton Boxing Club", "c": "Bethnal Green, London", "r": "London", "d": "boxing", "s": "repton-boxing-club"}, {"n": "The Ring Boxing Club", "c": "Bankside, London", "r": "London", "d": "boxing", "s": "the-ring-boxing-club"}, {"n": "Physical Culture", "c": "Putney, London", "r": "London", "d": "strength", "s": "physical-culture"}, {"n": "Toshi Karate Club", "c": "Edgware, London", "r": "London", "d": "boxing", "s": "toshi-karate-club"}, {"n": "County ABC", "c": "Leyton, London", "r": "London", "d": "boxing", "s": "county-abc"}, {"n": "Miguel's Boxing Gym", "c": "Herne Hill, London", "r": "London", "d": "boxing", "s": "miguels-boxing-gym"}, {"n": "Left Hook Boxing", "c": "Shadwell, London", "r": "London", "d": "boxing", "s": "lefthook-boxing"}, {"n": "KB Fitness", "c": "Central London", "r": "London", "d": "boxing", "s": "kb-fitness"}, {"n": "The Square Boxing", "c": "Chelsea, London", "r": "London", "d": "boxing", "s": "the-square-boxing"}, {"n": "Olympic Sports Gym", "c": "Ashton-under-Lyne", "r": "Manchester", "d": "strength", "s": "olympic-sports-gym"}, {"n": "Sale West ABC", "c": "Sale, Trafford", "r": "Manchester", "d": "boxing", "s": "sale-west-abc"}, {"n": "Samson Boxing Gym", "c": "Ashton-under-Lyne", "r": "Manchester", "d": "boxing", "s": "samson-boxing"}, {"n": "Taekwondo Machine", "c": "Harpurhey, Manchester", "r": "Manchester", "d": "boxing", "s": "taekwondo-machine"}, {"n": "The PT Factory", "c": "Denton, Manchester", "r": "Manchester", "d": "functional", "s": "pt-factory"}, {"n": "Team Fearless MMA", "c": "Manchester", "r": "Manchester", "d": "boxing", "s": "team-fearless-mma"}, {"n": "Fats Gym", "c": "Manchester M3", "r": "Manchester", "d": "boxing", "s": "fats-gym"}, {"n": "Jimmy Egan's Boxing", "c": "Wythenshawe, Manchester", "r": "Manchester", "d": "boxing", "s": "jimmy-egans-boxing"}, {"n": "Moss Side Fire Station ABC", "c": "Moss Side, Manchester", "r": "Manchester", "d": "boxing", "s": "moss-side-fire-station"}, {"n": "Timperley ABC", "c": "Timperley, Altrincham", "r": "Manchester", "d": "boxing", "s": "timperley-abc"}, {"n": "GMBD Hub", "c": "Oldham", "r": "Manchester", "d": "boxing", "s": "greater-manchester-boxing-hub"}, {"n": "Eagle Kickboxing", "c": "Birmingham", "r": "Birmingham", "d": "boxing", "s": "eagle-kickboxing"}, {"n": "USKA Fight Factory", "c": "Tyseley, Birmingham", "r": "Birmingham", "d": "boxing", "s": "uska-kickboxing"}, {"n": "Aero-Kick Gym", "c": "Birmingham", "r": "Birmingham", "d": "boxing", "s": "aero-kick"}, {"n": "Pat Benson Boxing", "c": "Kings Heath, Birmingham", "r": "Birmingham", "d": "boxing", "s": "pat-benson-boxing"}, {"n": "Intensity MMA", "c": "Willenhall", "r": "Birmingham", "d": "boxing", "s": "intensity-mma"}, {"n": "Solihull Community Boxing", "c": "Solihull", "r": "Birmingham", "d": "boxing", "s": "solihull-community-boxing"}, {"n": "18Y Ultimate Fitness", "c": "Balsall Heath, Birmingham", "r": "Birmingham", "d": "strength", "s": "18y-ultimate-fitness"}, {"n": "Birmingham Martial Arts Centre", "c": "Hall Green, Birmingham", "r": "Birmingham", "d": "boxing", "s": "birmingham-martial-arts"}, {"n": "Strike Martial Arts", "c": "Solihull", "r": "Birmingham", "d": "boxing", "s": "strike-martial-arts"}, {"n": "ITS Ladies Fitness", "c": "Kingswood, Bristol", "r": "Bristol", "d": "functional", "s": "its-ladies-fitness"}, {"n": "EightyOne Gym", "c": "Bristol", "r": "Bristol", "d": "strength", "s": "eightyone-gym"}, {"n": "Kick Start Health & Fitness", "c": "Hanham, Bristol", "r": "Bristol", "d": "functional", "s": "kickstart-health"}, {"n": "Bristol School of Karate", "c": "Bristol", "r": "Bristol", "d": "boxing", "s": "bristol-school-of-karate"}, {"n": "Personal Combat Training", "c": "Bristol", "r": "Bristol", "d": "boxing", "s": "personal-combat-training"}, {"n": "Alliance Boxing", "c": "Harehills, Leeds", "r": "Leeds & Yorkshire", "d": "boxing", "s": "alliance-boxing"}, {"n": "House of Gainz", "c": "Leeds", "r": "Leeds & Yorkshire", "d": "strength", "s": "house-of-gainz"}, {"n": "Bad Company Muay Thai", "c": "Leeds", "r": "Leeds & Yorkshire", "d": "boxing", "s": "bad-company-muaythai"}, {"n": "Kiatphontip", "c": "Leeds", "r": "Leeds & Yorkshire", "d": "boxing", "s": "kiatphontip"}, {"n": "Renowned Martial Arts", "c": "Barnsley", "r": "Leeds & Yorkshire", "d": "boxing", "s": "renowned-martial-arts"}, {"n": "Selby ABC", "c": "Selby", "r": "Leeds & Yorkshire", "d": "boxing", "s": "selby-abc"}, {"n": "Nottingham Strong", "c": "Nottingham", "r": "Nottingham", "d": "strength", "s": "nottingham-strong", "f": 1, "u": "https://samviro.github.io/gym-batch6/"}, {"n": "Paradigm Gym", "c": "Carlton, Nottingham", "r": "Nottingham", "d": "strength", "s": "paradigm-gym", "f": 1, "u": "https://samviro.github.io/gym-batch6/"}, {"n": "Structure Sport & Fitness", "c": "Sheffield", "r": "Sheffield", "d": "strength", "s": "structure-gym", "f": 1, "u": "https://samviro.github.io/gym-batch6/"}, {"n": "Compound S&C", "c": "Ruddington", "r": "Nottingham", "d": "functional", "s": "compound-sc", "f": 1, "u": "https://samviro.github.io/gym-batch6/"}, {"n": "Craig Ewers Academy", "c": "Cardiff", "r": "Cardiff", "d": "boxing", "s": "craig-ewers-academy", "f": 1, "u": "https://samviro.github.io/gym-batch6/"}, {"n": "Fitness Fraternity", "c": "Newcastle", "r": "Newcastle", "d": "strength", "s": "fitness-fraternity", "f": 1, "u": "https://samviro.github.io/gym-batch7/"}, {"n": "Smarter Fitness", "c": "Byker, Newcastle", "r": "Newcastle", "d": "strength", "s": "smarter-fitness", "f": 1, "u": "https://samviro.github.io/gym-batch7/"}, {"n": "CrossFit Glasgow", "c": "Glasgow", "r": "Glasgow", "d": "functional", "s": "crossfit-glasgow", "f": 1, "u": "https://samviro.github.io/gym-batch7/"}, {"n": "CrossFit Tyneside", "c": "Ouseburn, Newcastle", "r": "Newcastle", "d": "functional", "s": "crossfit-tyneside", "f": 1, "u": "https://samviro.github.io/gym-batch7/"}, {"n": "Hidden Strength", "c": "Gosforth", "r": "Newcastle", "d": "strength", "s": "hidden-strength", "f": 1, "u": "https://samviro.github.io/gym-batch7/"}];
   var TL = {boxing:"Boxing & Combat", strength:"Strength", functional:"Functional"};
-  var REGIONS = ["All regions","London","Manchester","Birmingham","Leeds & Yorkshire","Bristol"];
+  var REGIONS = ["All regions","London","Manchester","Birmingham","Leeds & Yorkshire","Bristol","Nottingham","Sheffield","Cardiff","Newcastle","Glasgow"];
   var st = {d:"all", r:"All regions", q:""};
   var wall = document.getElementById("wall");
   var note = document.getElementById("wallnote");
@@ -599,7 +626,7 @@ footer a:hover{color:var(--ink)}
       card.setAttribute("data-slug", g.s);
       card.innerHTML = '<div class="gmeta"><span class="gtag">'+TL[g.d]+'</span><span class="gcity">'+g.c+'</span></div>'
         + '<h3>'+g.n+'</h3>'
-        + '<a class="glink" href="'+BASE+g.s+'.html" target="_blank" rel="noopener">Open live preview <i>&#8594;</i></a>'
+        + '<a class="glink" href="'+(g.u || BASE)+g.s+'.html" target="_blank" rel="noopener">Open live preview <i>&#8594;</i></a>'
         + (g.f && !featuredMode ? '<i class="gnew">New</i>' : '')
         + (hitSlug===g.s ? '<span class="yours">This one\'s yours</span>' : '');
       wall.appendChild(card);
@@ -758,140 +785,41 @@ const rubber = new THREE.MeshStandardMaterial({ color: 0x141416, metalness: 0.2,
 const group = new THREE.Group();
 scene.add(group);
 
-/* ---- action rig: sweat spray, impact shake, heavy-steel grain, contact shadow ---- */
-const acts = [];
-let shake = 0;
-function noiseTex() {
-  const c = document.createElement('canvas'); c.width = c.height = 128;
-  const g = c.getContext('2d'); const d = g.createImageData(128, 128);
-  for (let i = 0; i < d.data.length; i += 4) { const v = 110 + (Math.random() * 90 | 0); d.data[i] = d.data[i + 1] = d.data[i + 2] = v; d.data[i + 3] = 255; }
-  g.putImageData(d, 0, 0);
-  const tx = new THREE.CanvasTexture(c); tx.wrapS = tx.wrapT = THREE.RepeatWrapping; tx.repeat.set(3, 3);
-  return tx;
-}
-const grain = noiseTex();
-chrome.bumpMap = grain; chrome.bumpScale = 0.0016;
-steel.bumpMap = grain; steel.bumpScale = 0.0032;
 
-const SW = 300;
-const swPos = new Float32Array(SW * 3), swVel = new Float32Array(SW * 3), swCol = new Float32Array(SW * 3);
-const swLife = new Float32Array(SW), swMax = new Float32Array(SW), swBase = new Float32Array(SW * 3);
-for (let i = 0; i < SW; i++) { swPos[i * 3 + 1] = -99; }
-const swGeo = new THREE.BufferGeometry();
-swGeo.setAttribute('position', new THREE.BufferAttribute(swPos, 3));
-swGeo.setAttribute('color', new THREE.BufferAttribute(swCol, 3));
-const swMat = new THREE.PointsMaterial({ size: 0.05, vertexColors: true, transparent: true, blending: THREE.AdditiveBlending, depthWrite: false });
-const swPts = new THREE.Points(swGeo, swMat);
-scene.add(swPts);
-let swI = 0;
-const whiteC = new THREE.Color(0xffffff);
-function spray(ox, oy, oz, count, power, biasX, biasY) {
-  for (let k = 0; k < count; k++) {
-    const i = swI; swI = (swI + 1) % SW;
-    swPos[i * 3] = ox + (Math.random() - 0.5) * 0.1;
-    swPos[i * 3 + 1] = oy + (Math.random() - 0.5) * 0.1;
-    swPos[i * 3 + 2] = oz + (Math.random() - 0.5) * 0.1;
-    const a = Math.random() * Math.PI * 2, r = Math.random();
-    swVel[i * 3] = Math.cos(a) * r * power + (biasX || 0) * power * 0.6;
-    swVel[i * 3 + 1] = (biasY !== undefined ? biasY : 1) * (0.5 + Math.random() * 0.9) * power;
-    swVel[i * 3 + 2] = Math.sin(a) * r * power * 0.5;
-    swMax[i] = swLife[i] = 0.5 + Math.random() * 0.55;
-    const c = Math.random() < 0.3 ? ACCENT : whiteC;
-    swBase[i * 3] = c.r; swBase[i * 3 + 1] = c.g; swBase[i * 3 + 2] = c.b;
-  }
-}
-function updateSpray(dt) {
-  for (let i = 0; i < SW; i++) {
-    if (swLife[i] <= 0) { swPos[i * 3 + 1] = -99; swCol[i * 3] = swCol[i * 3 + 1] = swCol[i * 3 + 2] = 0; continue; }
-    swLife[i] -= dt;
-    swPos[i * 3] += swVel[i * 3] * dt;
-    swPos[i * 3 + 1] += swVel[i * 3 + 1] * dt;
-    swPos[i * 3 + 2] += swVel[i * 3 + 2] * dt;
-    swVel[i * 3 + 1] -= 5.2 * dt;
-    const f = Math.max(0, swLife[i] / swMax[i]);
-    swCol[i * 3] = swBase[i * 3] * f;
-    swCol[i * 3 + 1] = swBase[i * 3 + 1] * f;
-    swCol[i * 3 + 2] = swBase[i * 3 + 2] * f;
-  }
-  swGeo.attributes.position.needsUpdate = true;
-  swGeo.attributes.color.needsUpdate = true;
-}
-/* lighting polish: equipment must read clearly */
-renderer.toneMappingExposure = (renderer.toneMappingExposure || 1) * 1.2;
-steel.color.set(0x5a5e64); steel.roughness = 0.3; steel.envMapIntensity = 1.4;
-const key2 = new THREE.DirectionalLight(0xffffff, 1.2);
-key2.position.set(-3.5, 2.4, 6.5); scene.add(key2);
-const kick = new THREE.PointLight(ACCENT, 70, 18, 2);
-kick.position.set(2.8, -1.1, 3.8); scene.add(kick);
-
-(function () {
-  const c = document.createElement('canvas'); c.width = c.height = 256;
-  const g = c.getContext('2d');
-  const rg = g.createRadialGradient(128, 128, 8, 128, 128, 124);
-  rg.addColorStop(0, 'rgba(0,0,0,0.85)'); rg.addColorStop(0.55, 'rgba(0,0,0,0.32)'); rg.addColorStop(1, 'rgba(0,0,0,0)');
-  g.fillStyle = rg; g.fillRect(0, 0, 256, 256);
-  const t = new THREE.CanvasTexture(c);
-  const m = new THREE.Mesh(new THREE.PlaneGeometry(3.8, 3.8), new THREE.MeshBasicMaterial({ map: t, transparent: true, opacity: 0.8, depthWrite: false }));
-  m.rotation.x = -Math.PI / 2; m.position.y = -1.36; scene.add(m);
-})();
-
-
-
-/* HEAVY LEG PRESS - sled on steel rails, loaded plates */
-const lp = new THREE.Group();
-const base = new THREE.Mesh(new THREE.BoxGeometry(1.14, 0.14, 1.95), steel);
-base.position.y = -1.22; lp.add(base);
-[-0.52, 0.52].forEach((x) => {
-  const side = new THREE.Mesh(new THREE.BoxGeometry(0.1, 0.52, 1.7), steel);
-  side.position.set(x, -0.95, 0); lp.add(side);
-  const rail = new THREE.Mesh(new THREE.CylinderGeometry(0.035, 0.035, 1.78, 18), accentM);
-  rail.rotation.x = Math.PI / 2; rail.position.set(x, -0.6, 0); lp.add(rail);
+/* olympic barbell with loaded plates */
+const bLen = 2.6;
+const bar = new THREE.Mesh(new THREE.CylinderGeometry(0.048, 0.048, bLen, 36), chrome);
+bar.rotation.z = Math.PI / 2;
+group.add(bar);
+[-1, 1].forEach((side) => {
+  const sleeve = new THREE.Mesh(new THREE.CylinderGeometry(0.07, 0.07, 0.34, 32), steel);
+  sleeve.rotation.z = Math.PI / 2;
+  sleeve.position.x = side * 0.78;
+  group.add(sleeve);
+  const collar = new THREE.Mesh(new THREE.CylinderGeometry(0.11, 0.11, 0.07, 28), accentM);
+  collar.rotation.z = Math.PI / 2;
+  collar.position.x = side * 0.98;
+  group.add(collar);
+  const p1 = new THREE.Mesh(new THREE.CylinderGeometry(0.5, 0.5, 0.11, 54), steel);
+  p1.rotation.z = Math.PI / 2;
+  p1.position.x = side * 1.1;
+  group.add(p1);
+  const r1 = new THREE.Mesh(new THREE.TorusGeometry(0.4, 0.014, 12, 64), chrome);
+  r1.position.x = side * 1.163;
+  r1.rotation.y = Math.PI / 2;
+  group.add(r1);
+  const p2 = new THREE.Mesh(new THREE.CylinderGeometry(0.38, 0.38, 0.09, 48), chrome);
+  p2.rotation.z = Math.PI / 2;
+  p2.position.x = side * 1.21;
+  group.add(p2);
+  const p3 = new THREE.Mesh(new THREE.CylinderGeometry(0.26, 0.26, 0.08, 40), accentM);
+  p3.rotation.z = Math.PI / 2;
+  p3.position.x = side * 1.3;
+  group.add(p3);
 });
-const stop = new THREE.Mesh(new THREE.BoxGeometry(1.18, 0.52, 0.12), steel);
-stop.position.set(0, -0.52, -0.88); stop.rotation.x = -0.18; lp.add(stop);
-const seat = new THREE.Mesh(new THREE.BoxGeometry(0.64, 0.13, 0.56), rubber);
-seat.position.set(0, -0.74, -0.52); seat.rotation.x = 0.26; lp.add(seat);
-const backr = new THREE.Mesh(new THREE.BoxGeometry(0.64, 0.68, 0.1), rubber);
-backr.position.set(0, -0.36, -0.76); backr.rotation.x = -0.5; lp.add(backr);
-
-const sled = new THREE.Group();
-const plate = new THREE.Mesh(new THREE.BoxGeometry(1.06, 0.86, 0.1), chrome);
-sled.add(plate);
-const foot = new THREE.Mesh(new THREE.BoxGeometry(0.94, 0.68, 0.05), steel);
-foot.position.set(0, -0.02, 0.1); foot.rotation.x = -0.2; sled.add(foot);
-[-0.64, 0.64].forEach((x) => {
-  const sleeve = new THREE.Mesh(new THREE.CylinderGeometry(0.05, 0.05, 0.4, 16), chrome);
-  sleeve.rotation.z = Math.PI / 2; sleeve.position.set(x, 0.06, 0); sled.add(sleeve);
-  for (let k = 0; k < 3; k++) {
-    const disc = new THREE.Mesh(new THREE.CylinderGeometry(0.34 - k * 0.02, 0.34 - k * 0.02, 0.055, 36), k === 1 ? accentM : rubber);
-    disc.rotation.z = Math.PI / 2;
-    disc.position.set(x + (x > 0 ? 1 : -1) * (0.1 + k * 0.062), 0.06, 0);
-    sled.add(disc);
-  }
-});
-sled.rotation.x = -0.55;
-sled.position.set(0, -0.34, 0.42);
-lp.add(sled);
-lp.rotation.x = -0.16;
-group.add(lp);
-
-let prevP = 0;
-acts.push((t, dt) => {
-  const cyc = 3.1;
-  const ph = (t % cyc) / cyc;
-  const push = ph < 0.45 ? ph / 0.45 : 1 - (ph - 0.45) / 0.55;
-  const e = push * push * (3 - 2 * push);
-  sled.position.z = 0.42 - e * 0.62;
-  sled.position.y = -0.34 + e * 0.16;
-  lp.position.x = Math.sin(t * 13) * 0.003 * (e > 0.8 ? 1 : 0);
-  if (ph < prevP) {
-    shake = Math.max(shake, 0.045);
-    spray(0.55, -0.05, 0.72, 18, 1.6, 0.55, 0.6);
-    spray(-0.55, -0.05, 0.72, 18, 1.6, -0.55, 0.6);
-  }
-  prevP = ph;
-});
-group.scale.setScalar(0.95);
+group.rotation.z = -0.06;
+group.position.set(0.4, 0.05, -0.2);
+group.scale.setScalar(1.0);
 
 
 /* particle atmosphere */
@@ -938,19 +866,12 @@ function tick() {
   requestAnimationFrame(tick);
   if (!visible) return;
   const t = clock.getElapsedTime();
-  const dt = Math.min(0.05, t - (window.__lt !== undefined ? window.__lt : t)); window.__lt = t;
   px += (tx - px) * 0.045;
   py += (ty - py) * 0.045;
   spin *= dragging ? 0.94 : 0.965;
-  group.rotation.y = t * 0.05 + px * 0.4 + spin;
-  group.rotation.x = py * 0.1 + Math.sin(t * 0.4) * 0.015;
-  for (let ai = 0; ai < acts.length; ai++) acts[ai](t, dt);
-  updateSpray(dt);
-  const wantX = (stage.clientWidth || 1200) > 900 ? 1.12 : 0;
-  group.position.x += (wantX - group.position.x) * 0.06;
-  shake *= 0.9;
-  camera.position.x = (Math.random() - 0.5) * shake;
-  camera.position.y = 0.12 + (Math.random() - 0.5) * shake * 0.6;
+  group.rotation.y = t * 0.12 + px * 0.55 + spin;
+  group.rotation.x = py * 0.22 + Math.sin(t * 0.5) * 0.05;
+  group.position.y = Math.sin(t * 0.8) * 0.09;
   pts.rotation.y = t * 0.02;
   pts2.rotation.y = -t * 0.016;
   pts.position.y = Math.sin(t * 0.18) * 0.4;
@@ -970,5 +891,6 @@ addEventListener('resize', () => {
   document.body.appendChild(m);
 })();
 </script>
+<script>(function(){var i=document.getElementById("chromeIntro");if(!i)return;function go(){i.classList.add("gone");setTimeout(function(){i.style.display="none"},950)}var t=setTimeout(go,2600);var b=document.getElementById("ciEnter");if(b)b.addEventListener("click",function(){clearTimeout(t);go()});})();</script>
 </body>
 </html>
